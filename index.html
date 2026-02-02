@@ -1,0 +1,2596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Food Foundation - Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="shortcut icon" href="/image/HFA logo.jpeg" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a5c36;
+            --secondary-color: #1a7c4d;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --gray-color: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .containerr {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #c19a2d;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .logo-img {
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section with Only Slider and News */
+        .hero-container {
+            padding-top: 130px;
+            padding-bottom: 30px;
+            background: linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.9)), url('https://images.unsplash.com/photo-1610360655260-bb6dcc4ac75c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .hero-slider-section {
+            flex: 2;
+            min-width: 300px;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-slider {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            height: 500px;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: rgba(10, 92, 54, 0.85);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 80%;
+            animation: slideUp 0.8s ease 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .slide-content h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .slide-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-btn {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-btn.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .arrow {
+            color: white;
+            background-color: rgba(10, 92, 54, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .arrow:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .hero-news-section {
+            flex: 1;
+            min-width: 300px;
+            animation: fadeInLeft 1s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-news-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+        }
+
+        .hero-news-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0;
+            font-size: 1.8rem;
+        }
+
+        .hero-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .hero-news-item {
+            padding: 20px;
+            border-left: 4px solid var(--primary-color);
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .hero-news-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-news-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-news-date i {
+            font-size: 0.8rem;
+        }
+
+        .hero-news-title {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-excerpt {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .view-all-news {
+            margin-top: 20px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* News Marquee Styles */
+        .news-marquee {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-container {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 0 40px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .marquee-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .news-marquee:hover .marquee-container {
+            animation-play-state: paused;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-intro {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .about-intro p {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            font-size: 1.05rem;
+        }
+
+        .about-full-text {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .about-full-text h3 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .about-full-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-full-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--gray-color);
+        }
+
+        .about-highlights {
+            background-color: #f8f9fa; 
+            padding: 25px; 
+            border-radius: 8px; 
+            margin: 25px 0; 
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .about-full-text ul {
+            margin: 15px 0 15px 20px;
+            color: var(--gray-color);
+        }
+
+        .about-full-text ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .about-full-text ul li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        #readMoreBtn {
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #readMoreBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .mission-box, .vision-box {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .mission-box:hover, .vision-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-box h3, .vision-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Food Process Section */
+        .Food-process {
+            background-color: white;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            background: linear-gradient(rgba(10, 92, 54, 0.9), rgba(10, 92, 54, 0.9)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            background-attachment: fixed;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+        }
+
+        .testimonial-slide {
+            padding: 40px;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .testimonial-text:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            opacity: 0.5;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Leadership Team Section - Professional Carousel */
+        .leadership {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .leadership-intro {
+            color: var(--gray-color);
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .leadership-carousel-container {
+            position: relative;
+            padding: 20px 0 60px;
+            overflow: hidden;
+        }
+
+        .leadership-carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 30px;
+            padding: 10px 5px;
+        }
+
+        .team-member-carousel {
+            flex: 0 0 calc(25% - 22.5px);
+            min-width: 0;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .team-member-carousel:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(10, 92, 54, 0.2);
+        }
+
+        .member-img {
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            position: relative;
+        }
+
+        .member-img:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: grayscale(10%);
+        }
+
+        .team-member-carousel:hover .member-img img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .member-info {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .member-name {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .member-title {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .member-title:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .member-bio {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .team-member-carousel.expanded .member-bio {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .team-member-carousel:hover .member-social {
+            opacity: 1;
+        }
+
+        .member-social a {
+            color: var(--primary-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .view-profile-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-profile-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10, 92, 54, 0.2);
+        }
+
+        .leadership-carousel-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            color: white;
+            background-color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            opacity: 0.9;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            pointer-events: all;
+        }
+
+        .carousel-arrow:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-arrow i {
+            font-size: 1rem;
+        }
+
+        .leadership-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 50px;
+        }
+
+        .carousel-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .carousel-dot:after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active:after {
+            border-color: rgba(10, 92, 54, 0.2);
+        }
+
+        .carousel-progress {
+            width: 100%;
+            height: 4px;
+            background-color: #eee;
+            margin-top: 30px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .carousel-progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Team Member Modal */
+        .team-member-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .team-member-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px);
+            transition: transform 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background-color: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding: 40px 40px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: #f8f9fa;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-header-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-header-info .member-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            padding: 30px 40px 40px;
+        }
+
+        .modal-body h4 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+
+        .modal-body p {
+            line-height: 1.8;
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            color: var(--gray-color);
+            line-height: 1.8;
+        }
+
+        .modal-body ul li {
+            margin-bottom: 10px;
+        }
+
+        /* FAQs Section */
+        .faqs {
+            background-color: #f9f9f9;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .faq-item.active {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(10, 92, 54, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo .logo-img {
+            height: 70px;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .team-member-carousel {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-slider {
+                height: 400px;
+            }
+            
+            .hero-news-container {
+                height: 400px;
+            }
+            
+            .leadership-carousel-arrows {
+                padding: 0;
+            }
+            
+            .carousel-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .team-member-carousel {
+                flex: 0 0 calc(50% - 15px);
+            }
+            
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 30px 20px 20px;
+            }
+            
+            .modal-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 90px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 25px 0;
+            }
+            
+            .hero-container {
+                padding-top: 130px;
+                min-height: calc(100vh - 80px);
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .slide-content {
+                max-width: 95%;
+                padding: 20px;
+            }
+            
+            .arrow {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .team-member-carousel {
+                flex: 0 0 calc(100% - 0px);
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-container {
+                padding-top: 120px;
+                padding-bottom: 40px;
+            }
+            
+            .hero-slider {
+                height: 350px;
+            }
+            
+            .hero-news-container {
+                height: 350px;
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+            
+            .slider-arrows {
+                padding: 0 10px;
+            }
+            
+            .arrow {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .hero-news-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-member-carousel {
+                flex: 0 0 calc(100% - 0px);
+            }
+            
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .modal-header-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="containerr header-container">
+            <div class="logo-container">
+                <div class="logo-img">
+                   <img src="image/halal logo.png" alt="HCA Logo" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <h1>Halal Food Foundation</h1>
+                    <p> | Ensuring Halal Compliance</p>
+                </div>
+            </div>
+             
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#management">Board of Trustees</a></li>
+                    <li><a href="#services">Grant</a></li>
+                    <li><a href="#faqs">Event</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Only Slider and News -->
+    <section class="hero-container" id="home">
+        <div class="containerr">
+            <div class="hero-content">
+                <!-- News Section -->
+                <div class="hero-news-section">
+                    <div class="hero-news-container">
+                        <div class="hero-news-header">
+                            <h2>Latest News & Updates</h2>
+                        </div>
+
+                        <div class="hero-news-list">
+                            <div class="hero-news-item">
+                                <div class="hero-news-date">
+                                    <i class="far fa-calendar-alt"></i> June 15, 2023
+                                </div>
+                                <h3 class="hero-news-title">New Halal Standards for Food Processing</h3>
+                                <p class="news-excerpt">HFF releases updated guidelines for food processing facilities seeking Halal certification to align with international standards.</p>
+                            </div>
+
+                            <div class="hero-news-item">
+                                <div class="hero-news-date">
+                                    <i class="far fa-calendar-alt"></i> May 28, 2023
+                                </div>
+                                <h3 class="hero-news-title">Partnership with Saudi Food Authority</h3>
+                                <p class="news-excerpt">HFF signs MoU with Saudi Food and Drug Authority to streamline Halal certification for UK exporters.</p>
+                            </div>
+
+                            <div class="hero-news-item">
+                                <div class="hero-news-date">
+                                    <i class="far fa-calendar-alt"></i> April 10, 2023
+                                </div>
+                                <h3 class="hero-news-title">Halal Awareness Workshop in London</h3>
+                                <p class="news-excerpt">Successful completion of our Halal certification workshop for restaurants and food service providers in London.</p>
+                            </div>
+                            
+                            <div class="hero-news-item">
+                                <div class="hero-news-date">
+                                    <i class="far fa-calendar-alt"></i> March 22, 2023
+                                </div>
+                                <h3 class="hero-news-title">Annual Halal Conference 2023</h3>
+                                <p class="news-excerpt">Join us for our annual conference featuring industry leaders discussing the future of Halal certification.</p>
+                            </div>
+                            
+                            <div class="hero-news-item">
+                                <div class="hero-news-date">
+                                    <i class="far fa-calendar-alt"></i> February 15, 2023
+                                </div>
+                                <h3 class="hero-news-title">New Online Certification Portal</h3>
+                                <p class="news-excerpt">We've launched a new online portal for easier application tracking and certification management.</p>
+                            </div>
+                        </div>
+
+                        <div class="view-all-news">
+                            <a href="#" class="btn btn-accent">View All News</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Section -->
+                <div class="hero-slider-section">
+                    <div class="hero-slider">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active" style="background-image: url('/image/ev4.webp');">
+                            <div class="slide-content">
+                                <h3>The Halal Food Foundation (HFF)</h3>
+                                <p>is a not for profit, registered UK charity (1139457). We aim to make the concept of 'halal' more accessible and well known to the public through training schemes, workshops, food festivals and educational material.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+                            <div class="slide-content">
+                                <h3>Trusted Halal Certification</h3>
+                                <p>UK's leading authority for authentic Halal certification services with international recognition in over 27 countries worldwide.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+                            <div class="slide-content">
+                                <h3>Comprehensive Services</h3>
+                                <p>From food processing to restaurants, cosmetics to pharmaceuticals - we provide end-to-end Halal compliance solutions.</p>
+                            </div>
+                        </div>
+
+                        <div class="slider-arrows">
+                            <div class="arrow" id="prevSlide">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="arrow" id="nextSlide">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="slider-nav" id="sliderNav">
+                            <div class="slider-btn active" data-slide="0"></div>
+                            <div class="slider-btn" data-slide="1"></div>
+                            <div class="slider-btn" data-slide="2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Marquee -->
+    <section class="news-marquee">
+        <div class="containerr">
+            <div class="marquee-container" id="marqueeContainer">
+                <div class="marquee-item">
+                    <i class="fas fa-newspaper"></i> New Halal Standards for Food Processing - HFF releases updated guidelines for food processing facilities seeking Halal certification.
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-handshake"></i> Partnership with Saudi Food Authority - HFF signs MoU with Saudi Food and Drug Authority.
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-users"></i> Halal Awareness Workshop in London - Successful completion of our Halal certification workshop.
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-globe"></i> New Certification Portal Launch - We've launched a new online portal for easier application tracking.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-intro">
+                        <p>The <strong>Halal Food Foundation (HFF)</strong> is a UK-registered charity (1139457) dedicated to promoting the understanding and accessibility of halal principles. We believe halal is more than dietary rules—it's a holistic lifestyle encompassing health, cleanliness, and ethical consumption.</p>
+                        
+                        <p>Through education, training, and community engagement, we empower individuals and organizations to make informed choices about halal living.</p>
+                    </div>
+                    
+                    <div class="about-full-text" id="aboutFullText" style="display: none;">
+                        <h3>Our Vision & Mission</h3>
+                        <p>Founded with a vision to bridge knowledge gaps in the Muslim community and beyond, HFF operates on the principle: "Give a man a fish, feed him for a day; teach a man to fish, feed him for a lifetime." We believe education is key to fostering appreciation for halal's abundant benefits.</p>
+                        
+                        <h3>What We Do</h3>
+                        <p>We address critical gaps in halal education through:</p>
+                        <ul>
+                            <li><strong>Comprehensive Training Programs:</strong> Workshops and seminars for mosques, schools, and Islamic centers</li>
+                            <li><strong>Educational Resources:</strong> Developing accessible materials on halal principles and practices</li>
+                            <li><strong>Community Outreach:</strong> Engaging diverse audiences to promote halal awareness</li>
+                            <li><strong>Industry Collaboration:</strong> Partnering with halal producers and certifiers</li>
+                        </ul>
+                        
+                        <p>Born from Halal Accreditation Limited's vision in 2013, HFF serves as an educational arm, helping communities understand not just <em>what</em> is halal, but <em>why</em> it matters—from food selection to lifestyle choices.</p>
+                        
+                        <h3>Why It Matters</h3>
+                        <p>Maintaining a halal lifestyle requires discipline, but with the growing halal industry, accessing halal products has never been easier. We help people navigate this landscape while understanding halal's profound health, ethical, and spiritual dimensions.</p>
+                        
+                        <div class="about-highlights">
+                            <h4 style="color: var(--primary-color); margin-bottom: 15px;">Key Focus Areas</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                <div class="highlight-item">
+                                    <i class="fas fa-graduation-cap" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                    <strong>Education First</strong>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-handshake" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                    <strong>Community Building</strong>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-heart" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                    <strong>Holistic Approach</strong>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-globe" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                    <strong>Global Perspective</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Join us in our mission to make halal living accessible, understood, and appreciated by all. Subscribe to our newsletter to stay updated on workshops, resources, and halal industry developments.</p>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <button id="readMoreBtn" class="btn btn-accent">
+                            <span class="btn-text">Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="image/ev3.webp" alt="Halal Food Foundation Team">
+                </div>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission-box">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To promote understanding and accessibility of halal principles through education, training, and community engagement, empowering individuals to make informed halal lifestyle choices.</p>
+                </div>
+                <div class="vision-box">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>A world where halal living is accessible, understood, and appreciated by all, fostering healthier, more ethical, and spiritually conscious communities globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <!-- <section class="statistics section">
+        <div class="container">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1500">0</div>
+                    <div class="stat-text">Certified Businesses</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="27">0</div>
+                    <div class="stat-text">Countries Served</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-text">Satisfaction Rate</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Leadership Team Section - Professional Carousel -->
+    <section class="leadership section" id="management">
+        <div class="container">
+            <h2 class="section-title">Board of Trustees</h2>
+            <p class="text-center leadership-intro">
+                Our distinguished Board of Trustees comprises visionary leaders with diverse expertise in Islamic jurisprudence, food science, business management, and international trade. They provide strategic guidance, ensure Shariah compliance, and uphold our commitment to promoting authentic Halal practices worldwide.
+            </p>
+            
+            <!-- Leadership Carousel Container -->
+            <div class="leadership-carousel-container">
+                <!-- Carousel Track -->
+                <div class="leadership-carousel-track" id="leadershipCarouselTrack">
+                    <!-- Team Member 1 -->
+                    <div class="team-member-carousel" data-member="1">
+                        <div class="member-img">
+                            <img src="image/drMartin1.webp" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr Abdul Matin Khan</h3>
+                            <!-- <div class="member-title">Chairman</div> -->
+                            <p class="member-bio">Having acquired the highest professional qualifications in Finance,</p>
+                            <div class="member-social">
+                                <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a> -->
+                            </div>
+                            <button class="view-profile-btn">View Profile</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-member-carousel" data-member="2">
+                        <div class="member-img">
+                            <img src="image/drSiddque1.webp" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dr Ghayasuddin Siddiqui</h3>
+                            <!-- <div class="member-title">Chair, Shariah Board</div> -->
+                            <p class="member-bio">Dr Ghayasuddin Siddiqui, a PhD in Chemistry is a well-known activist,campaigner,</p>
+                            <div class="member-social">
+                                <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a> -->
+                            </div>
+                            <button class="view-profile-btn">View Profile</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-member-carousel" data-member="3">
+                        <div class="member-img">
+                            <img src="/image/mrChoudary.webp" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Mr Ehsan Choudhry</h3>
+                            
+                            <p class="member-bio">Ehsan Choudhry is a graduate in Urdu, a General Secretary of Pakistan Welfare Association Hounslow,</p>
+                            <div class="member-social">
+                                <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a> -->
+                            </div>
+                            <button class="view-profile-btn">View Profile</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="team-member-carousel" data-member="4">
+                        <div class="member-img">
+                            <img src="/image/mrLatif.webp" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Mr Ahmed Latif</h3>
+                            
+                            <p class="member-bio">Mr Ahmed Latif is presently CEO of A & M International Limited, which is a metal trading company and part of AMIDT Group of Dubai.</p>
+                            <div class="member-social">
+                                <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a> -->
+                            </div>
+                            <button class="view-profile-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Navigation Arrows -->
+                <div class="leadership-carousel-arrows">
+                    <div class="carousel-arrow carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <!-- Carousel Progress Bar -->
+                <div class="carousel-progress">
+                    <div class="carousel-progress-bar" id="carouselProgressBar"></div>
+                </div>
+                
+                <!-- Carousel Dots Navigation -->
+                <div class="leadership-carousel-dots" id="leadershipCarouselDots">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <p style="color: var(--gray-color); max-width: 700px; margin: 0 auto; font-size: 0.95rem;">
+                    Our trustees meet quarterly to review strategic direction, ensure financial accountability, and uphold the highest standards of Halal integrity. Each member brings unique expertise while sharing a common commitment to serving the Muslim community and promoting ethical consumption.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about Halal certification? Our team is ready to assist you with the certification process and answer any questions you may have.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Unit 15, Linen House, 253 Kilburn Lane, Queen's Park London, W10 4BQ United Kingdom</p>
+                        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +44(0)2084467127</p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@halalfoodauthority.com</p>
+                        <p><i class="fas fa-clock"></i> <strong>Business Hours:</strong> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="food">Food & Beverages Certification</option>
+                                <option value="restaurant">Restaurant & Hotel Certification</option>
+                                <option value="cosmetics">Cosmetics & Pharmaceuticals</option>
+                                <option value="export">Export Certification</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Member Modal -->
+    <div class="team-member-modal" id="teamMemberModal">
+        <div class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content" id="modalContent">
+            <!-- Modal content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-about">
+                        <h3>Halal Food Foundation</h3>
+                        <p>The Halal Food Foundation is a UK-registered charity dedicated to promoting understanding and accessibility of halal principles through education and community engagement.</p>
+                        <a href="#contact" class="btn" style="margin-top: 15px;">Contact Us</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#management">Board of Trustees</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Unit 15, Linen House, 253 Kilburn Lane, Queen's Park London, W10 4BQ United Kingdom</p>
+                    <p><i class="fas fa-phone"></i> +44(0)2084467127</p>
+                    <p><i class="fas fa-envelope"></i> info@halalfoodauthority.com</p>
+                    <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="date"></span> Halal Food Foundation. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> <br>
+                Design and Development by <a target="_blank" href="https://theyoungpioneers.com/">The Young Pioneers</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.querySelector('i').classList.toggle('fa-bars');
+            mobileToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Hero Slider Functionality
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const sliderBtns = document.querySelectorAll('.slider-btn');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            sliderBtns.forEach(btn => btn.classList.remove('active'));
+            heroSlides[index].classList.add('active');
+            sliderBtns[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        sliderBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => showSlide(index));
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = currentSlide > 0 ? currentSlide - 1 : heroSlides.length - 1;
+            showSlide(currentSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = currentSlide < heroSlides.length - 1 ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        });
+
+        let slideInterval = setInterval(() => {
+            currentSlide = currentSlide < heroSlides.length - 1 ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        }, 5000);
+
+        const heroSlider = document.querySelector('.hero-slider');
+        heroSlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        heroSlider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                currentSlide = currentSlide < heroSlides.length - 1 ? currentSlide + 1 : 0;
+                showSlide(currentSlide);
+            }, 5000);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Testimonial Slider
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            testimonialDots.forEach(dot => dot.classList.remove('active'));
+            testimonialSlides[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showTestimonial(index));
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = currentTestimonial < testimonialSlides.length - 1 ? currentTestimonial + 1 : 0;
+            showTestimonial(currentTestimonial);
+        }, 8000);
+
+        // FAQs Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if(otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            alert(`Thank you ${name}! Your message has been received. We will contact you at ${email} shortly.`);
+            contactForm.reset();
+        });
+
+        // Animated Statistics Counter
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsSection = document.querySelector('.statistics');
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if(current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-count'));
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+
+        // Leadership Carousel Functionality
+        const leadershipCarouselTrack = document.getElementById('leadershipCarouselTrack');
+        const leadershipCarouselDots = document.getElementById('leadershipCarouselDots');
+        const carouselProgressBar = document.getElementById('carouselProgressBar');
+        const carouselPrevBtn = document.querySelector('.carousel-prev');
+        const carouselNextBtn = document.querySelector('.carousel-next');
+        const teamMemberModal = document.getElementById('teamMemberModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        
+        let currentCarouselPosition = 0;
+        let carouselAutoSlideInterval;
+        let totalTeamMembers = 0;
+        let membersPerView = 4;
+        let totalSlides = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Team Member Data
+        const teamMembersData = {
+            1: {
+                name: "Dr Abdul Matin Khan",
+                
+                img: "image/drMartin1.webp",
+                bio: "Having acquired the highest professional qualifications in Finance, Accounting and Administration in the UK as Chartered Management Accountant and Chartered Company Secretary and Administrator, Dr Khan has worked at senior management positions in Asia, Africa and Europe. Dr Khan has been involved with the HFA since its inception as one of the founding members of the BOT.",
+               
+               
+            },
+            2: {
+                name: "Dr Ghayasuddin Siddiqui",
+                img: "image/drSiddque1.webp",
+                bio: "Dr Ghayasuddin Siddiqui, a PhD in Chemistry is a well-known activist,campaigner, writer and expert on Muslim political thought. Dr Siddiqui has promoted dialogue and engagement across all barriers: religious,social, cultural and political; and was the founding chairman of the Halal Food Authority.",
+                
+            },
+            3: {
+                name: "Mr Ehsan Choudhry",
+                
+                img: "image/mrChoudary.webp",
+                bio: "Ehsan Choudhry is a graduate in Urdu, a General Secretary of Pakistan Welfare Association Hounslow, a research scholar and a world famous poet and author of seven books. Topping all of that with a heart of gold, Ehsan is also a pioneer volunteer of HFA since 1995 , the owner of an established business and a responsible journalist in the UK.",
+                
+            },
+            4: {
+                name: "Mr Ahmed Latif",
+                
+                img: "image/mrLatif.webp",
+                bio: "Mr Ahmed Latif is presently CEO of A & M International Limited, which is a metal trading company and part of AMIDT Group of Dubai. Mr Latif Graduated in Commerce in 1963 from Karachi University and secured First Class First Position and was also awarded Gold Medal for his academic achievements. Mr Latif is also a member of Lions Club and spends great deal of his time in charitable work.",
+            },
+        };
+
+        function initializeCarousel() {
+            const teamMembers = document.querySelectorAll('.team-member-carousel');
+            totalTeamMembers = teamMembers.length;
+            
+            // Calculate responsive members per view
+            if (window.innerWidth >= 1200) {
+                membersPerView = 4;
+            } else if (window.innerWidth >= 992) {
+                membersPerView = 3;
+            } else if (window.innerWidth >= 768) {
+                membersPerView = 2;
+            } else {
+                membersPerView = 1;
+            }
+            
+            // Calculate total slides
+            totalSlides = Math.max(1, totalTeamMembers - membersPerView + 1);
+            
+            // Generate dots
+            leadershipCarouselDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.setAttribute('data-slide', i);
+                leadershipCarouselDots.appendChild(dot);
+            }
+            
+            // Set initial position
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            // Calculate the width of one member including gap
+            const firstMember = document.querySelector('.team-member-carousel');
+            if (!firstMember) return;
+            
+            const memberWidth = firstMember.offsetWidth;
+            const gap = 30; // Match the gap in CSS
+            const totalWidth = memberWidth + gap;
+            
+            // Move the carousel track
+            leadershipCarouselTrack.style.transform = `translateX(-${currentCarouselPosition * totalWidth}px)`;
+            
+            // Update active dot
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentCarouselPosition);
+            });
+            
+            // Update progress bar
+            const progressPercentage = ((currentCarouselPosition + 1) / totalSlides) * 100;
+            carouselProgressBar.style.width = `${progressPercentage}%`;
+        }
+
+        function nextCarouselSlide() {
+            if (currentCarouselPosition < totalSlides - 1) {
+                currentCarouselPosition++;
+            } else {
+                currentCarouselPosition = 0; // Loop back to start
+            }
+            updateCarousel();
+        }
+
+        function prevCarouselSlide() {
+            if (currentCarouselPosition > 0) {
+                currentCarouselPosition--;
+            } else {
+                currentCarouselPosition = totalSlides - 1; // Loop to end
+            }
+            updateCarousel();
+        }
+
+        function goToCarouselSlide(index) {
+            currentCarouselPosition = index;
+            updateCarousel();
+            resetCarouselAutoSlide();
+        }
+
+        // Auto-slide functionality
+        function startCarouselAutoSlide() {
+            carouselAutoSlideInterval = setInterval(nextCarouselSlide, 5000);
+        }
+
+        function resetCarouselAutoSlide() {
+            clearInterval(carouselAutoSlideInterval);
+            startCarouselAutoSlide();
+        }
+
+        // Show team member modal
+        function showTeamMemberModal(memberId) {
+            const memberData = teamMembersData[memberId];
+            if (!memberData) return;
+            
+            const modalHTML = `
+                <div class="modal-header">
+                    <div class="modal-img">
+                        <img src="${memberData.img}" alt="${memberData.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\" fill=\"%230a5c36\"><rect width=\"400\" height=\"400\" fill=\"%23f0f0f0\"/><text x=\"50%\" y=\"50%\" font-family=\"Arial\" font-size=\"80\" fill=\"%230a5c36\" text-anchor=\"middle\" dy=\".3em\">${memberData.name.split(' ').map(n => n[0]).join('')}</text></svg>';">
+                    </div>
+                    <div class="modal-header-info">
+                        <h3>${memberData.name}</h3>
+                       
+                        
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4>Biography</h4>
+                    <p>${memberData.bio}</p>
+                    
+                    
+                </div>
+            `;
+            
+            modalContent.innerHTML = modalHTML;
+            teamMemberModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Read More Button Functionality for About Section
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const aboutFullText = document.getElementById('aboutFullText');
+
+        if (readMoreBtn && aboutFullText) {
+            readMoreBtn.addEventListener('click', function() {
+                const isExpanded = aboutFullText.style.display === 'block';
+                const btnText = this.querySelector('.btn-text');
+                const btnIcon = this.querySelector('i');
+                
+                if (isExpanded) {
+                    aboutFullText.style.display = 'none';
+                    btnText.textContent = 'Read More';
+                    btnIcon.className = 'fas fa-chevron-down';
+                    this.classList.remove('active');
+                    
+                    // Scroll to top of about section when collapsing
+                    setTimeout(() => {
+                        document.getElementById('about').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 300);
+                } else {
+                    aboutFullText.style.display = 'block';
+                    btnText.textContent = 'Read Less';
+                    btnIcon.className = 'fas fa-chevron-up';
+                    this.classList.add('active');
+                    
+                    // Smooth scroll to expanded content
+                    setTimeout(() => {
+                        aboutFullText.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                    }, 100);
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('date').textContent = new Date().getFullYear();
+            
+            initializeCarousel();
+
+            // Event listeners for arrows
+            if (carouselPrevBtn && carouselNextBtn) {
+                carouselPrevBtn.addEventListener('click', () => {
+                    prevCarouselSlide();
+                    resetCarouselAutoSlide();
+                });
+
+                carouselNextBtn.addEventListener('click', () => {
+                    nextCarouselSlide();
+                    resetCarouselAutoSlide();
+                });
+            }
+
+            // Event listeners for dots
+            document.querySelectorAll('.carousel-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    goToCarouselSlide(slideIndex);
+                });
+            });
+
+            // Event listeners for view profile buttons
+            document.querySelectorAll('.view-profile-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const memberCard = this.closest('.team-member-carousel');
+                    const memberId = memberCard.getAttribute('data-member');
+                    showTeamMemberModal(memberId);
+                });
+            });
+
+            // Event listener for modal close
+            modalClose.addEventListener('click', () => {
+                teamMemberModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside content
+            teamMemberModal.addEventListener('click', (e) => {
+                if (e.target === teamMemberModal) {
+                    teamMemberModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Touch/swipe support for mobile
+            leadershipCarouselTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(carouselAutoSlideInterval);
+            });
+
+            leadershipCarouselTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startCarouselAutoSlide();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const difference = touchStartX - touchEndX;
+                
+                if (Math.abs(difference) > swipeThreshold) {
+                    if (difference > 0) {
+                        // Swipe left - next slide
+                        nextCarouselSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevCarouselSlide();
+                    }
+                }
+            }
+
+            // Expand/collapse member bio on card click
+            document.querySelectorAll('.team-member-carousel').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('view-profile-btn') && 
+                        !e.target.closest('.view-profile-btn') &&
+                        !e.target.classList.contains('member-social') &&
+                        !e.target.closest('.member-social')) {
+                        this.classList.toggle('expanded');
+                    }
+                });
+            });
+
+            // Start auto-slide
+            startCarouselAutoSlide();
+
+            // Pause auto-slide on hover
+            const leadershipCarouselContainer = document.querySelector('.leadership-carousel-container');
+            if (leadershipCarouselContainer) {
+                leadershipCarouselContainer.addEventListener('mouseenter', () => {
+                    clearInterval(carouselAutoSlideInterval);
+                });
+
+                leadershipCarouselContainer.addEventListener('mouseleave', () => {
+                    startCarouselAutoSlide();
+                });
+            }
+
+            // Reinitialize carousel on window resize
+            window.addEventListener('resize', () => {
+                initializeCarousel();
+            });
+        });
+    </script>
+</body>
+</html>
