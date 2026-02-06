@@ -294,9 +294,51 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section with Slider and News */
+        /* News Marquee Styles - MOVED TO TOP */
+        .news-marquee {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+            margin-top: 110px; /* Added margin to account for fixed header */
+            z-index: 999;
+        }
+
+        .marquee-container {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 0 40px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .marquee-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .news-marquee:hover .marquee-container {
+            animation-play-state: paused;
+        }
+
+        /* Hero Section with Slider and News - UPDATED LAYOUT */
         .hero-container {
-            padding-top: 130px;
+            padding-top: 30px;
             padding-bottom: 30px;
             background: linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.9)), url('https://images.unsplash.com/photo-1610360655260-bb6dcc4ac75c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
             background-attachment: fixed;
@@ -304,7 +346,6 @@
             background-position: center;
             display: flex;
             align-items: center;
-            min-height: 100vh;
         }
 
         .hero-content {
@@ -314,14 +355,15 @@
             width: 100%;
         }
 
+        /* Slider Section - NOW ON LEFT */
         .hero-slider-section {
-            flex: 2;
+            flex: 1;
             min-width: 300px;
-            animation: fadeInRight 1s ease;
+            animation: fadeInLeft 1s ease;
         }
 
-        @keyframes fadeInRight {
-            from { transform: translateX(30px); opacity: 0; }
+        @keyframes fadeInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
 
@@ -430,14 +472,15 @@
             transform: scale(1.1);
         }
 
+        /* News Section - NOW ON RIGHT */
         .hero-news-section {
             flex: 1;
             min-width: 300px;
-            animation: fadeInLeft 1s ease;
+            animation: fadeInRight 1s ease;
         }
 
-        @keyframes fadeInLeft {
-            from { transform: translateX(-30px); opacity: 0; }
+        @keyframes fadeInRight {
+            from { transform: translateX(30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
 
@@ -522,46 +565,6 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid #eee;
-        }
-
-        /* News Marquee Styles */
-        .news-marquee {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .marquee-container {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll-left 30s linear infinite;
-        }
-
-        .marquee-item {
-            display: inline-block;
-            padding: 0 40px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .marquee-item i {
-            margin-right: 10px;
-            color: var(--accent-color);
-        }
-
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .news-marquee:hover .marquee-container {
-            animation-play-state: paused;
         }
 
         /* Map Location Section */
@@ -1907,6 +1910,11 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            /* Adjust news marquee margin for mobile */
+            .news-marquee {
+                margin-top: 90px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1938,7 +1946,7 @@
             }
             
             .hero-container {
-                padding-top: 130px;
+                padding-top: 30px;
                 min-height: calc(100vh - 80px);
             }
             
@@ -1993,11 +2001,22 @@
                 left: 20px;
                 width: calc(100% - 40px);
             }
+            
+            /* Adjust news marquee for mobile */
+            .news-marquee {
+                margin-top: 90px;
+                padding: 10px 0;
+            }
+            
+            .marquee-item {
+                padding: 0 20px;
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 576px) {
             .hero-container {
-                padding-top: 120px;
+                padding-top: 20px;
                 padding-bottom: 40px;
             }
             
@@ -2052,6 +2071,16 @@
             
             .modal-body {
                 padding: 20px;
+            }
+            
+            /* Adjust news marquee for small screens */
+            .news-marquee {
+                margin-top: 85px;
+            }
+            
+            .marquee-item {
+                padding: 0 15px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -2127,11 +2156,59 @@
         </div>
     </header>
 
-    <!-- Hero Section with Slider and News -->
+    <!-- News Marquee - MOVED TO BE AFTER NAV BAR -->
+    <section class="news-marquee">
+        <div class="containerr">
+            <div class="marquee-container" id="marqueeContainer">
+                <div class="marquee-item">
+                    <i class="fas fa-newspaper"></i> <span data-translate="marquee_item_1">New Halal Standards for Food Processing - HFF releases updated guidelines for food processing facilities seeking Halal certification.</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-handshake"></i> <span data-translate="marquee_item_2">Partnership with Saudi Food Authority - HFF signs MoU with Saudi Food and Drug Authority.</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-users"></i> <span data-translate="marquee_item_3">Halal Awareness Workshop in London - Successful completion of our Halal certification workshop.</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-globe"></i> <span data-translate="marquee_item_4">New Certification Portal Launch - We've launched a new online portal for easier application tracking.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section with Slider and News - UPDATED LAYOUT -->
     <section class="hero-container" id="home">
         <div class="containerr">
             <div class="hero-content">
-                <!-- News Section -->
+                <!-- Slider Section - NOW ON LEFT -->
+                <div class="hero-slider-section">
+                    <div class="hero-slider">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active" style="background-image: url('/image/ev4.webp');">
+                            <div class="slide-content">
+                                <h3 data-translate="slide_title_1">The Halal Food Foundation (HFF)</h3>
+                                <p data-translate="slide_text_1">is a not for profit, registered UK charity (1139457). We aim to make the concept of 'halal' more accessible and well known to the public through training schemes, workshops, food festivals and educational material.</p>
+                            </div>
+                        </div>
+
+                        <div class="slider-arrows">
+                            <!-- <div class="arrow" id="prevSlide">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="arrow" id="nextSlide">
+                                <i class="fas fa-chevron-right"></i>
+                            </div> -->
+                        </div>
+
+                        <div class="slider-nav" id="sliderNav">
+                            <!-- <div class="slider-btn active" data-slide="0"></div>
+                            <div class="slider-btn" data-slide="1"></div>
+                            <div class="slider-btn" data-slide="2"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Section - NOW ON RIGHT -->
                 <div class="hero-news-section">
                     <div class="hero-news-container">
                         <div class="hero-news-header">
@@ -2184,54 +2261,6 @@
                             <a href="#" class="btn btn-accent" data-translate="view_all_news">View All News</a>
                         </div>
                     </div>
-                </div>
-
-                <!-- Slider Section -->
-                <div class="hero-slider-section">
-                    <div class="hero-slider">
-                        <!-- Slide 1 -->
-                        <div class="hero-slide active" style="background-image: url('/image/ev4.webp');">
-                            <div class="slide-content">
-                                <h3 data-translate="slide_title_1">The Halal Food Foundation (HFF)</h3>
-                                <p data-translate="slide_text_1">is a not for profit, registered UK charity (1139457). We aim to make the concept of 'halal' more accessible and well known to the public through training schemes, workshops, food festivals and educational material.</p>
-                            </div>
-                        </div>
-
-                        <div class="slider-arrows">
-                            <!-- <div class="arrow" id="prevSlide">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="arrow" id="nextSlide">
-                                <i class="fas fa-chevron-right"></i>
-                            </div> -->
-                        </div>
-
-                        <div class="slider-nav" id="sliderNav">
-                            <!-- <div class="slider-btn active" data-slide="0"></div>
-                            <div class="slider-btn" data-slide="1"></div>
-                            <div class="slider-btn" data-slide="2"></div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Marquee -->
-    <section class="news-marquee">
-        <div class="containerr">
-            <div class="marquee-container" id="marqueeContainer">
-                <div class="marquee-item">
-                    <i class="fas fa-newspaper"></i> <span data-translate="marquee_item_1">New Halal Standards for Food Processing - HFF releases updated guidelines for food processing facilities seeking Halal certification.</span>
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-handshake"></i> <span data-translate="marquee_item_2">Partnership with Saudi Food Authority - HFF signs MoU with Saudi Food and Drug Authority.</span>
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-users"></i> <span data-translate="marquee_item_3">Halal Awareness Workshop in London - Successful completion of our Halal certification workshop.</span>
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-globe"></i> <span data-translate="marquee_item_4">New Certification Portal Launch - We've launched a new online portal for easier application tracking.</span>
                 </div>
             </div>
         </div>
@@ -3749,7 +3778,7 @@
                 "member_1_name": "Dr. Abdul Matin Khan",
                 "member_1_bio": "Na het behalen van de hoogste professionele kwalificaties in Financiën, Accountancy en Administratie in het VK als Chartered Management Accountant en Chartered Company Secretary and Administrator, heeft Dr. Khan gewerkt in senior managementposities in Azië, Afrika en Europa. Dr. Khan is betrokken geweest bij HFA sinds de oprichting als een van de oprichtende leden van de BOT.",
                 "member_2_name": "Dr. Ghayasuddin Siddiqui",
-                "member_2_bio": "Dr. Ghayasuddin Siddiqui, een gepromoveerde in de chemie, is een bekende activist, campagnevoerder, schrijver en expert in moslim politiek denken. Dr. Siddiqui heeft dialoog en betrokkenheid bevorderd over alle barrières heen: religieus, sociaal, cultureel en politiek; en was de oprichtende voorzitter van de Halal Food Authority.",
+                "member_2_bio": "Dr. Ghayasuddin Siddiqui, een gepromoveerde in de chemie, is een bekende activist, campagnevoerder, schrijver en expert in moslim politiek denken. Dr. Siddiqui heeft dialoog en betrokkenheid bevorderd over alle barrières heen: religieus, sociaal, culturel en politiek; en was de oprichtende voorzitter van de Halal Food Authority.",
                 "member_3_name": "Dhr. Ehsan Choudhry",
                 "member_3_bio": "Ehsan Choudhry is afgestudeerd in Urdu, Algemeen Secretaris van Pakistan Welfare Association Hounslow, onderzoeker en een wereldberoemde dichter en auteur van zeven boeken. Bovenop dit alles met een hart van goud, is Ehsan ook een pioniersvrijwilliger van HFA sinds 1995, eigenaar van een gevestigd bedrijf en een verantwoordelijke journalist in het VK.",
                 "member_4_name": "Dhr. Ahmed Latif",
