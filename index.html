@@ -165,7 +165,7 @@
             color: var(--primary-color);
             margin-bottom: 5px;
         }
-
+        
         .logo-text p {
             font-size: 0.8rem;
             color: var(--gray-color);
@@ -175,11 +175,15 @@
         .language-switcher {
             position: relative;
             margin-left: 20px;
+            max-width: 100px;
+            display: flex;
+            justify-self: flex-end;
         }
 
         .current-language {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
+            /* justify-content: right; */
             gap: 8px;
             padding: 8px 15px;
             background-color: #f8f9fa;
@@ -1955,8 +1959,15 @@
             }
             
             .slide-content {
-                max-width: 95%;
+                max-width: 100%;
+                width: 100%;
                 padding: 20px;
+                background: rgba(10, 92, 54, 0.626);
+            }
+
+            .hero-slide{
+                padding: 0px;
+                align-items: normal;
             }
             
             .arrow {
@@ -2184,7 +2195,7 @@
                 <div class="hero-slider-section">
                     <div class="hero-slider">
                         <!-- Slide 1 -->
-                        <div class="hero-slide active" style="background-image: url('/image/ev4.webp');">
+                        <div class="hero-slide active" style="background-image: url('/image/ev4.jpg');">
                             <div class="slide-content">
                                 <h3 data-translate="slide_title_1">The Halal Food Foundation (HFF)</h3>
                                 <p data-translate="slide_text_1">is a not for profit, registered UK charity (1139457). We aim to make the concept of 'halal' more accessible and well known to the public through training schemes, workshops, food festivals and educational material.</p>
@@ -2329,7 +2340,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="image/ev3.webp" alt="Halal Food Foundation Team">
+                    <img src="image/ev3.jpg" alt="Halal Food Foundation Team">
                 </div>
             </div>
             
@@ -2361,7 +2372,7 @@
                     <!-- Team Member 1 -->
                     <div class="team-member-carousel" data-member="1">
                         <div class="member-img">
-                            <img src="image/drMartin1.webp" alt="Dr Abdul Matin Khan">
+                            <img src="image/drMartin1.png" alt="Dr Abdul Matin Khan">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name" data-translate="member_1_name">Dr Abdul Matin Khan</h3>
@@ -2376,7 +2387,7 @@
                     <!-- Team Member 2 -->
                     <div class="team-member-carousel" data-member="2">
                         <div class="member-img">
-                            <img src="image/drSiddque1.webp" alt="Dr Ghayasuddin Siddiqui">
+                            <img src="image/drSiddque1.png" alt="Dr Ghayasuddin Siddiqui">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name" data-translate="member_2_name">Dr Ghayasuddin Siddiqui</h3>
@@ -2406,7 +2417,7 @@
                     <!-- Team Member 4 -->
                     <div class="team-member-carousel" data-member="4">
                         <div class="member-img">
-                            <img src="/image/mrLatif.webp" alt="Mr Ahmed Latif">
+                            <img src="/image/mrLatif.png" alt="Mr Ahmed Latif">
                         </div>
                         <div class="member-info">
                             <h3 class="member-name" data-translate="member_4_name">Mr Ahmed Latif</h3>
@@ -2551,20 +2562,20 @@
                 <!-- Event 2 -->
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="/image/ev2.webp" alt="International Halal Conference">
+                        <img src="/image/ev2.jpg" alt="International Halal Conference">
                     </div>
                 </div>
                 
                 <!-- Event 3 -->
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="/image/ev3.webp" alt="Meat Economics Workshop">
+                        <img src="/image/ev3.jpg" alt="Meat Economics Workshop">
                     </div>
                 </div> 
                 
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="/image/ev4.webp" alt="Halal Food Festival">
+                        <img src="/image/ev4.jpg" alt="Halal Food Festival">
                     </div>
                 </div> 
 
@@ -2576,7 +2587,7 @@
 
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="/image/ev6.webp" alt="Industry Panel Discussion">
+                        <img src="/image/ev6.jpg" alt="Industry Panel Discussion">
                     </div>
                 </div> 
                 
@@ -4324,14 +4335,14 @@
             const teamMembersData = {
                 1: {
                     name: "Dr Abdul Matin Khan",
-                    img: "image/drMartin1.webp",
+                    img: "image/drMartin1.png",
                     bio: "Having acquired the highest professional qualifications in Finance, Accounting and Administration in the UK as Chartered Management Accountant and Chartered Company Secretary and Administrator, Dr Khan has worked at senior management positions in Asia, Africa and Europe. Dr Khan has been involved with the HFA since its inception as one of the founding members of the BOT.",
                     education: "Chartered Management Accountant, Chartered Company Secretary and Administrator",
                     experience: "Senior management positions in Asia, Africa and Europe"
                 },
                 2: {
                     name: "Dr Ghayasuddin Siddiqui",
-                    img: "image/drSiddque1.webp",
+                    img: "image/drSiddque1.png",
                     bio: "Dr Ghayasuddin Siddiqui, a PhD in Chemistry is a well-known activist, campaigner, writer and expert on Muslim political thought. Dr Siddiqui has promoted dialogue and engagement across all barriers: religious, social, cultural and political; and was the founding chairman of the Halal Food Authority.",
                     education: "PhD in Chemistry",
                     experience: "Founding chairman of the Halal Food Authority"
@@ -4345,7 +4356,7 @@
                 },
                 4: {
                     name: "Mr Ahmed Latif",
-                    img: "image/mrLatif.webp",
+                    img: "image/mrLatif.png",
                     bio: "Mr Ahmed Latif is presently CEO of A & M International Limited, which is a metal trading company and part of AMIDT Group of Dubai. Mr Latif Graduated in Commerce in 1963 from Karachi University and secured First Class First Position and was also awarded Gold Medal for his academic achievements. Mr Latif is also a member of Lions Club and spends great deal of his time in charitable work.",
                     education: "Graduated in Commerce, Karachi University (First Class First Position, Gold Medal)",
                     experience: "CEO of A & M International Limited, Member of Lions Club"
