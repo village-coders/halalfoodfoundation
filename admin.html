@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halal Food Foundation - Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Halal Food Foundation · Admin (Mobile)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
@@ -29,172 +29,161 @@
             --gray-color: #95a5a6;
             --text-color: #34495e;
             --border-color: #e0e0e0;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --transition: all 0.25s ease;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(145deg, #f0f4f8 0%, #d9e2ec 100%);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.5;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Login Page Styles */
+        /* ----- LOGIN (fully responsive) ----- */
         .login-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-            padding: 20px;
+            background: linear-gradient(145deg, var(--primary-color), #0b6e41);
+            padding: 12px;
         }
 
         .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 28px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 450px;
-            padding: 50px;
-            animation: slideUp 0.5s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            padding: 32px 24px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideUp 0.4s ease;
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 30px;
-
+            margin-bottom: 24px;
         }
 
         .login-header img {
-            width: 100px;
-            height: 80px;
+            /* width: 85px; */
+            height: 85px;
             object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 15px;
+            /* border-radius: 50%; */
+            margin-bottom: 10px;
+            /* border: 3px solid white; */
+            /* box-shadow: 0 6px 12px rgba(0,0,0,0.1); */
         }
 
         .login-header h2 {
             color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.9rem;
             font-weight: 600;
+            letter-spacing: -0.3px;
         }
 
         .login-header p {
-            color: var(--gray-color);
-            font-size: 0.95rem;
+            color: #5e7a8c;
+            font-size: 0.9rem;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
             color: var(--dark-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group textarea,
+        .form-control,
+        .filter-select {
             width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
+            padding: 14px 18px;
+            border: 2px solid #e8edf2;
+            border-radius: 18px;
             font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
             font-size: 1rem;
+            background: white;
+            transition: var(--transition);
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .filter-select:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(10, 92, 54, 0.1);
+            box-shadow: 0 0 0 3px rgba(10,92,54,0.15);
         }
 
         .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--primary-color), #166b3b);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            font-size: 1rem;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(10, 92, 54, 0.3);
+            box-shadow: 0 6px 12px rgba(10,92,54,0.3);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(10, 92, 54, 0.4);
+            transform: scale(1.02);
+            background: #1e7a4d;
         }
 
-        .btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
+        .btn:active {
+            transform: scale(0.98);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, var(--gray-color), #7f8c8d);
-            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+            background: #b0c4d9;
+            color: #1e3b4f;
+            box-shadow: none;
         }
-
         .btn-danger {
-            background: linear-gradient(135deg, var(--danger-color), #c0392b);
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            background: #e74c3c;
+            box-shadow: 0 4px 12px #e74c3c70;
         }
 
         .alert {
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+            padding: 14px 18px;
+            border-radius: 40px;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
             gap: 12px;
-            animation: fadeIn 0.3s ease;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .alert-danger {
-            background: #fdeaea;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-
-        .alert-success {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-
-        /* Admin Panel Styles */
+        /* ----- ADMIN PANEL (fully stacked + touch) ----- */
         .admin-container {
             display: none;
             min-height: 100vh;
@@ -202,1371 +191,717 @@
 
         .admin-nav {
             background: white;
-            box-shadow: var(--shadow);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            padding: 8px 0;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             background: rgba(255, 255, 255, 0.95);
         }
 
         .nav-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 16px;
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
             align-items: center;
+            justify-content: space-between;
+            gap: 8px 10px;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 8px;
         }
-
         .nav-logo img {
-            height: 50px;
-            width: 50px;
+            height: 80px;
+            width: 80px;
+            /* border-radius: 50%; */
             object-fit: cover;
-            border-radius: 50%;
         }
-
         .nav-logo span {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-color);
+            white-space: nowrap;
         }
 
         .nav-user {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .user-info {
             text-align: right;
+            line-height: 1.3;
         }
-
         .user-name {
             font-weight: 600;
             color: var(--primary-color);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
-
         .user-role {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--gray-color);
         }
 
         .logout-btn {
-            padding: 10px 20px;
+            padding: 10px 16px;
             background: transparent;
             border: 2px solid var(--danger-color);
             color: var(--danger-color);
-            border-radius: 8px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
             font-weight: 500;
-            display: flex;
+            font-size: 0.9rem;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            transition: 0.2s;
         }
-
-        .logout-btn:hover {
+        .logout-btn:active {
             background: var(--danger-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
         .admin-main {
-            margin-top: 90px;
-            padding: 30px;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        /* stacked header */
         .page-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
             background: white;
-            padding: 25px 30px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 32px;
             box-shadow: var(--shadow);
         }
-
         .page-header h1 {
             color: var(--primary-color);
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .page-header h1 i {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            padding: 15px;
-            border-radius: 15px;
-            color: white;
             font-size: 1.8rem;
-        }
-
-        .add-news-btn {
-            background: linear-gradient(135deg, var(--success-color), #229954);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .page-header h1 i {
+            background: var(--primary-color);
+            padding: 12px;
+            border-radius: 18px;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .add-news-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 40px;
+            background: linear-gradient(145deg, #27ae60, #1e8449);
+            box-shadow: 0 8px 20px #22995470;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
         }
 
-        .add-news-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-        }
-
+        /* stat cards → column on mobile */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
         }
 
         .stat-card {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 28px;
+            padding: 22px 20px;
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
-            gap: 20px;
-            transition: var(--transition);
+            gap: 18px;
         }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
         .stat-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
-
         .stat-content h3 {
-            font-size: 1rem;
-            color: var(--gray-color);
-            margin-bottom: 8px;
-            font-weight: 500;
+            font-size: 0.95rem;
+            color: #6b7f8f;
         }
-
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary-color);
-            line-height: 1;
         }
 
+        /* filter bar stacked */
         .filter-bar {
             background: white;
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 32px;
+            margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
+            flex-direction: column;
+            gap: 16px;
             box-shadow: var(--shadow);
         }
-
         .search-box {
-            flex: 1;
-            min-width: 300px;
+            width: 100%;
             position: relative;
         }
-
         .search-box i {
             position: absolute;
-            left: 18px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gray-color);
-            font-size: 1.1rem;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 15px 20px 15px 50px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
+            color: #a0b8c9;
             font-size: 1rem;
         }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(10, 92, 54, 0.1);
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 48px;
+            border-radius: 40px;
+            border: 2px solid #e4ecf3;
+            font-size: 1rem;
         }
 
         .filter-select {
-            padding: 15px 30px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            background: white;
-            cursor: pointer;
-            font-size: 0.95rem;
-            min-width: 200px;
+            border-radius: 40px;
+            background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2334495e" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right 20px center;
+            background-size: 16px;
+            padding: 15px 24px;
+            -webkit-appearance: none;
         }
 
+        /* table → stacked cards on mobile (block display) */
         .news-table-container {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            overflow-x: auto;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            overflow-x: hidden;
         }
 
         .news-table {
-            width: 100%;
-            border-collapse: collapse;
+            display: none; /* hidden, we use card layout */
         }
 
-        .news-table th {
-            text-align: left;
-            padding: 18px 15px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 3px solid var(--secondary-color);
+        .news-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .news-table td {
-            padding: 18px 15px;
-            border-bottom: 1px solid var(--border-color);
+        .news-card {
+            background: white;
+            border-radius: 30px;
+            padding: 18px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0f3f7;
+            transition: 0.15s;
         }
 
-        .news-table tr:hover td {
-            background: #f8f9fa;
+        .news-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
-        .news-title {
-            font-weight: 600;
+        .news-card-title {
+            font-weight: 700;
+            font-size: 1.25rem;
             color: var(--dark-color);
+            line-height: 1.3;
+            flex: 1;
+            padding-right: 8px;
         }
 
-        .news-preview {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            max-width: 350px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .news-card-date {
+            font-size: 0.8rem;
+            background: #eaf3eb;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: var(--primary-dark);
+            font-weight: 500;
             white-space: nowrap;
         }
 
-        .news-date {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            font-weight: 500;
+        .news-card-preview {
+            color: #5f7d95;
+            font-size: 0.95rem;
+            margin: 12px 0 18px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .action-btns {
+        .news-card-actions {
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .action-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
+        .card-action-btn {
+            flex: 1;
+            min-width: 90px;
+            background: #f2f6fa;
             border: none;
-            background: #f8f9fa;
-            color: var(--gray-color);
-            cursor: pointer;
-            transition: var(--transition);
+            border-radius: 30px;
+            padding: 12px 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2c3e50;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            gap: 6px;
+            transition: 0.15s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
+        .card-action-btn i { font-size: 1rem; }
+        .card-action-btn:active { background: #d0e0ee; }
+        .view-btn-card i { color: var(--info-color); }
+        .edit-btn-card i { color: #e67e22; }
+        .delete-btn-card i { color: var(--danger-color); }
 
-        .action-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .view-btn:hover {
-            background: linear-gradient(135deg, var(--info-color), #2980b9);
-            color: white;
-        }
-
-        .edit-btn:hover {
-            background: linear-gradient(135deg, var(--warning-color), #e67e22);
-            color: white;
-        }
-
-        .delete-btn:hover {
-            background: linear-gradient(135deg, var(--danger-color), #c0392b);
-            color: white;
-        }
-
+        /* pagination touch */
         .pagination {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
+            gap: 8px;
+            margin: 28px 0 12px;
         }
 
         .page-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
+            width: 46px;
+            height: 46px;
+            border-radius: 46px;
+            border: 2px solid #e0e8f0;
             background: white;
-            cursor: pointer;
-            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
         }
-
         .page-btn.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            background: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
         }
-
-        .page-btn:hover:not(.active) {
-            background: var(--light-color);
-            border-color: var(--primary-color);
+        .page-btn:active {
+            background: #e6edf5;
         }
 
-        /* Modal Styles */
+        /* modals — fullscreen friendly */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            align-items: flex-end; /* bottom sheet on mobile */
             justify-content: center;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(5px);
+            z-index: 2000;
+            padding: 0;
+            backdrop-filter: blur(4px);
         }
-
         .modal.active {
             display: flex;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.2s;
         }
 
         .modal-content {
             background: white;
-            border-radius: 24px;
+            border-radius: 36px 36px 0 0;
             width: 100%;
-            max-width: 700px;
-            max-height: 90vh;
+            max-height: 92vh;
             overflow-y: auto;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
+            padding: 20px 20px 30px;
+            animation: slideUpModal 0.25s ease;
+        }
+
+        @keyframes slideUpModal {
+            0% { transform: translateY(30px); opacity: 0.6; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header {
-            padding: 25px 30px;
-            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 10;
-            border-radius: 24px 24px 0 0;
+            padding: 12px 0 16px;
+            border-bottom: 2px solid #f0f5fa;
+            margin-bottom: 16px;
         }
 
         .modal-header h2 {
+            font-size: 1.5rem;
             color: var(--primary-color);
-            font-size: 1.6rem;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
         .modal-close {
             background: none;
             border: none;
-            font-size: 2rem;
+            font-size: 2.4rem;
+            line-height: 1;
             cursor: pointer;
-            color: var(--gray-color);
-            transition: var(--transition);
-            width: 40px;
-            height: 40px;
+            color: #96aec2;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
         }
-
-        .modal-close:hover {
-            color: var(--danger-color);
-            background: #fdeaea;
-        }
-
-        .modal-body {
-            padding: 30px;
-        }
+        .modal-close:active { background: #f1f5f9; }
 
         .modal-footer {
-            padding: 25px 30px;
-            border-top: 1px solid var(--border-color);
             display: flex;
-            justify-content: flex-end;
-            gap: 15px;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .modal-footer .btn {
+            width: 100%;
+            margin: 0;
         }
 
-        /* View Modal Specific Styles */
-        .view-modal .modal-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: white;
-        }
-
-        .view-modal .modal-header h2 {
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .view-modal .modal-close {
-            color: white;
-        }
-
-        .view-modal .modal-close:hover {
-            color: var(--secondary-color);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
+        /* view modal */
+        .view-modal .modal-content { border-radius: 36px 36px 0 0; }
         .view-news-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: 1.8rem;
             font-weight: 700;
+            color: var(--primary-dark);
             line-height: 1.3;
         }
-
         .view-news-date {
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: var(--gray-color);
-            font-size: 1rem;
-            margin-bottom: 30px;
-            padding-bottom: 25px;
-            border-bottom: 3px solid var(--secondary-color);
+            gap: 10px;
+            color: #557a8a;
+            background: #f2f8ff;
+            padding: 12px 18px;
+            border-radius: 40px;
+            margin: 16px 0;
         }
-
-        .view-news-date i {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-
         .view-news-description {
-            color: var(--text-color);
-            line-height: 1.9;
-            font-size: 1.1rem;
-            white-space: pre-wrap;
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .form-textarea {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            min-height: 180px;
-            resize: vertical;
+            background: #f7faff;
+            padding: 22px;
+            border-radius: 28px;
             font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(10, 92, 54, 0.1);
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: var(--gray-color);
-        }
-
-        .loading i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
+            line-height: 1.7;
+            white-space: pre-wrap;
         }
 
         .empty-state {
             text-align: center;
-            padding: 80px;
-            color: var(--gray-color);
+            padding: 40px 20px;
+            background: white;
+            border-radius: 48px;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6a8fa0;
         }
 
-        .empty-state i {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            color: #e0e0e0;
+        @media (min-width: 680px) {
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .page-header { flex-direction: row; align-items: center; justify-content: space-between; }
+            .add-news-btn { width: auto; }
+            .modal-content { max-width: 600px; border-radius: 36px; margin: 20px; }
+            .modal { align-items: center; }
+            .modal-footer { flex-direction: row; }
         }
 
-        .empty-state h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-content {
-                padding: 0 20px;
-            }
-
-            .nav-logo span {
-                font-size: 1.1rem;
-            }
-
-            .admin-main {
-                padding: 20px;
-            }
-
-            .page-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .filter-bar {
-                flex-direction: column;
-            }
-
-            .search-box {
-                width: 100%;
-            }
-
-            .filter-select {
-                width: 100%;
-            }
-
-            .news-table td {
-                min-width: 150px;
-            }
-
-            .modal-content {
-                margin: 10px;
-            }
-        }
+        /* table is hidden, we show cards */
+        .news-table, #newsTable { display: none; }
     </style>
 </head>
 <body>
-    <!-- Login Page -->
+    <!-- LOGIN PAGE (mobile ready) -->
     <div class="login-container" id="loginPage">
         <div class="login-card">
-             <div class="login-header">
+            <div class="login-header">
                 <img src="/image/halal logo.png" alt="HFF Logo">
                 <h2>Admin Login</h2>
-                <p>Enter your credentials to access the admin panel</p>
+                <p>Enter credentials</p>
             </div>
-            
             <div id="loginAlert" class="alert alert-danger" style="display: none;">
-                <i class="fas fa-exclamation-circle"></i>
-                <span id="loginErrorMessage"></span>
+                <i class="fas fa-exclamation-circle"></i> <span id="loginErrorMessage"></span>
             </div>
-            
             <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">
-                        <i class="fas fa-envelope"></i> Email Address
-                    </label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">
-                        <i class="fas fa-lock"></i> Password
-                    </label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                </div>
-                
-                <button type="submit" class="btn" id="loginBtn">
-                    <span class="btn-text">Login to Dashboard</span>
-                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-                </button>
+                <div class="form-group"><label><i class="fas fa-envelope"></i> Email</label><input type="email" id="email" placeholder="admin@halal.com" required></div>
+                <div class="form-group"><label><i class="fas fa-lock"></i> Password</label><input type="password" id="password" placeholder="••••••••" required></div>
+                <button type="submit" class="btn" id="loginBtn"><span class="btn-text">Login</span><i class="fas fa-spinner fa-spin" style="display: none;"></i></button>
             </form>
-            
-            <div style="margin-top: 25px; text-align: center;">
-                <a href="/" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">
-                    <i class="fas fa-arrow-left"></i> Back to Website
-                </a>
-            </div>
+            <div style="margin-top: 20px; text-align: center;"><a href="/" style="color:var(--primary-color);"><i class="fas fa-arrow-left"></i> back</a></div>
         </div>
     </div>
 
-    <!-- Admin Panel -->
+    <!-- ADMIN PANEL (mobile optimized) -->
     <div class="admin-container" id="adminPanel">
         <nav class="admin-nav">
             <div class="nav-content">
-                <div class="nav-logo">
-                    <img src="/image/halal logo.png" alt="HFF Logo">
-                    <span>Halal Food Foundation Admin</span>
-                </div>
+                <div class="nav-logo"><img src="/image/halal logo.png"><span>Halal Food Admin</span></div>
                 <div class="nav-user">
-                    <div class="user-info">
-                        <div class="user-name" id="adminName">Administrator</div>
-                        <div class="user-role">Content Manager</div>
-                    </div>
-                    <button class="logout-btn" id="logoutBtn">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
+                    <div class="user-info"><div class="user-name" id="adminName">Admin</div><div class="user-role">manager</div></div>
+                    <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span class="hide-xs">Exit</span></button>
                 </div>
             </div>
         </nav>
 
         <main class="admin-main">
-            <!-- Page Header -->
             <div class="page-header">
-                <h1>
-                    <i class="fas fa-newspaper"></i>
-                    News Management
-                </h1>
-                <button class="add-news-btn" id="addNewsBtn">
-                    <i class="fas fa-plus-circle"></i>
-                    Create New Article
-                </button>
+                <h1><i class="fas fa-newspaper"></i> News</h1>
+                <button class="btn add-news-btn" id="addNewsBtn"><i class="fas fa-plus-circle"></i> New article</button>
             </div>
 
-            <!-- Statistics -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3>Total News</h3>
-                        <div class="stat-number" id="totalNews">0</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3>This Month</h3>
-                        <div class="stat-number" id="monthNews">0</div>
-                    </div>
-                </div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-newspaper"></i></div><div class="stat-content"><h3>Total</h3><div class="stat-number" id="totalNews">0</div></div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-alt"></i></div><div class="stat-content"><h3>This month</h3><div class="stat-number" id="monthNews">0</div></div></div>
             </div>
 
-            <!-- Filter Bar -->
             <div class="filter-bar">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search news by title or content...">
-                </div>
-
-                <select class="filter-select" id="sortFilter">
-                    <option value="newest">📅 Newest First</option>
-                    <option value="oldest">📅 Oldest First</option>
-                    <option value="title">📝 Sort by Title</option>
-                </select>
+                <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Search news..."></div>
+                <select class="filter-select" id="sortFilter"><option value="newest">📅 Newest</option><option value="oldest">📅 Oldest</option><option value="title">📝 Title</option></select>
             </div>
 
-            <!-- News Table -->
-            <div class="news-table-container">
-                <div id="loadingIndicator" class="loading" style="display: none;">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>Loading your news articles...</p>
-                </div>
-                
-                <div id="emptyState" class="empty-state" style="display: none;">
-                    <i class="fas fa-newspaper"></i>
-                    <h3>No News Articles Found</h3>
-                    <p>Click the "Create New Article" button to get started.</p>
-                </div>
+            <!-- Card container (mobile) -->
+            <div id="loadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading articles…</p></div>
+            <div id="emptyState" class="empty-state" style="display: none;"><i class="fas fa-newspaper"></i><h3>No news</h3><p>Create your first article</p></div>
 
-                <table class="news-table" id="newsTable" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description Preview</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="newsTableBody"></tbody>
-                </table>
-            </div>
+            <div id="newsCardList" class="news-card-list" style="display: none;"></div>
 
-            <!-- Pagination -->
+            <!-- hidden old table (replaced) -->
+            <table style="display: none;"><tbody id="newsTableBody"></tbody></table>
+
             <div class="pagination" id="pagination"></div>
         </main>
     </div>
 
-    <!-- Add/Edit News Modal -->
-    <div class="modal" id="newsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">
-                    <i class="fas fa-plus-circle"></i>
-                    <span>Create News Article</span>
-                </h2>
-                <button class="modal-close" id="modalClose">&times;</button>
-            </div>
-            <form id="newsForm">
-                <div class="modal-body">
-                    <div id="modalAlert" class="alert alert-danger" style="display: none;"></div>
-                    
-                    <input type="hidden" id="newsId">
-                    
-                    <div class="form-group">
-                        <label for="newsTitle">Article Title *</label>
-                        <input type="text" id="newsTitle" class="form-control" placeholder="Enter an engaging title" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="newsDescription">Article Content *</label>
-                        <textarea id="newsDescription" class="form-textarea" placeholder="Write your news article content here..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="newsDate">Publication Date *</label>
-                        <input type="datetime-local" id="newsDate" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="cancelBtn">
-                        <i class="fas fa-times"></i> Cancel
-                    </button>
-                    <button type="submit" class="btn" id="saveBtn">
-                        <span class="btn-text">Publish Article</span>
-                        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="newsModal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle"><i class="fas fa-plus-circle"></i><span>Article</span></h2><button class="modal-close" id="modalClose">&times;</button></div>
+    <form id="newsForm"><div class="modal-body"><div id="modalAlert" class="alert alert-danger" style="display: none;"></div><input type="hidden" id="newsId">
+    <div class="form-group"><label>Title *</label><input type="text" id="newsTitle" class="form-control" required></div>
+    <div class="form-group"><label>Content *</label><textarea id="newsDescription" class="form-textarea" rows="5" required></textarea></div>
+    <div class="form-group"><label>Date *</label><input type="datetime-local" id="newsDate" class="form-control" required></div>
+    </div><div class="modal-footer"><button type="button" class="btn btn-secondary" id="cancelBtn"><i class="fas fa-times"></i> Cancel</button><button type="submit" class="btn" id="saveBtn"><span class="btn-text">Save</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></form></div></div>
 
-    <!-- Delete Confirmation Modal -->
-    <div class="modal" id="deleteModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>
-                    <i class="fas fa-exclamation-triangle" style="color: var(--danger-color);"></i>
-                    Confirm Deletion
-                </h2>
-                <button class="modal-close" id="deleteModalClose">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p style="font-size: 1.1rem; margin-bottom: 10px;">Are you sure you want to delete this article?</p>
-                <p style="color: var(--danger-color); font-weight: 500;">This action cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">
-                    <i class="fas fa-times"></i> Cancel
-                </button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
-                    <span class="btn-text">Delete Permanently</span>
-                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- Delete modal -->
+    <div class="modal" id="deleteModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-exclamation-triangle" style="color:#e74c3c;"></i> Confirm</h2><button class="modal-close" id="deleteModalClose">&times;</button></div><div class="modal-body"><p style="font-size:1.2rem;">Delete permanently?</p><p style="color:var(--danger-color);"> irreversible</p></div><div class="modal-footer"><button class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button><button class="btn btn-danger" id="confirmDeleteBtn"><span class="btn-text">Delete</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></div></div>
 
-    <!-- View News Modal -->
-    <div class="modal view-modal" id="viewNewsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>
-                    <i class="fas fa-newspaper"></i>
-                    News Article Preview
-                </h2>
-                <button class="modal-close" id="viewModalClose">&times;</button>
-            </div>
-            <div class="modal-body" id="viewModalBody">
-                <div class="view-news-title" id="viewNewsTitle"></div>
-                <div class="view-news-date">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span id="viewNewsDateText"></span>
-                </div>
-                <div class="view-news-description" id="viewNewsDescription"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="closeViewBtn">
-                    <i class="fas fa-times"></i> Close
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- View modal -->
+    <div class="modal view-modal" id="viewNewsModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-newspaper"></i> Preview</h2><button class="modal-close" id="viewModalClose">&times;</button></div><div class="modal-body"><div class="view-news-title" id="viewNewsTitle"></div><div class="view-news-date"><i class="fas fa-calendar-alt"></i><span id="viewNewsDateText"></span></div><div class="view-news-description" id="viewNewsDescription"></div></div><div class="modal-footer"><button class="btn btn-secondary" id="closeViewBtn">Close</button></div></div></div>
 
     <script>
-        // API Base URL
-        const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
+        (function() {
+            const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
+            let authToken = localStorage.getItem('adminToken');
+            let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
+            let newsData = [];
+            let currentPage = 1, itemsPerPage = 5;  // less per page for mobile
+            let currentFilters = { search: '', sort: 'newest' };
+            let deleteTargetId = null;
 
-        // State management
-        let authToken = localStorage.getItem('adminToken');
-        let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
-        let newsData = [];
-        let currentPage = 1;
-        let itemsPerPage = 10;
-        let currentFilters = {
-            search: '',
-            sort: 'newest'
-        };
-        let deleteTargetId = null;
+            // DOM
+            const loginPage = document.getElementById('loginPage');
+            const adminPanel = document.getElementById('adminPanel');
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const loginAlert = document.getElementById('loginAlert');
+            const loginErrorMessage = document.getElementById('loginErrorMessage');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const adminName = document.getElementById('adminName');
+            const addNewsBtn = document.getElementById('addNewsBtn');
+            const newsModal = document.getElementById('newsModal');
+            const modalClose = document.getElementById('modalClose');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const newsForm = document.getElementById('newsForm');
+            const modalTitle = document.getElementById('modalTitle');
+            const newsId = document.getElementById('newsId');
+            const newsTitle = document.getElementById('newsTitle');
+            const newsDescription = document.getElementById('newsDescription');
+            const newsDate = document.getElementById('newsDate');
+            const modalAlert = document.getElementById('modalAlert');
+            const saveBtn = document.getElementById('saveBtn');
+            const deleteModal = document.getElementById('deleteModal');
+            const deleteModalClose = document.getElementById('deleteModalClose');
+            const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+            const searchInput = document.getElementById('searchInput');
+            const sortFilter = document.getElementById('sortFilter');
+            const viewNewsModal = document.getElementById('viewNewsModal');
+            const viewModalClose = document.getElementById('viewModalClose');
+            const closeViewBtn = document.getElementById('closeViewBtn');
+            const viewNewsTitle = document.getElementById('viewNewsTitle');
+            const viewNewsDateText = document.getElementById('viewNewsDateText');
+            const viewNewsDescription = document.getElementById('viewNewsDescription');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const emptyState = document.getElementById('emptyState');
+            const paginationDiv = document.getElementById('pagination');
+            const totalNewsSpan = document.getElementById('totalNews');
+            const monthNewsSpan = document.getElementById('monthNews');
+            const newsCardList = document.getElementById('newsCardList');
 
-        // DOM Elements
-        const loginPage = document.getElementById('loginPage');
-        const adminPanel = document.getElementById('adminPanel');
-        const loginForm = document.getElementById('loginForm');
-        const loginBtn = document.getElementById('loginBtn');
-        const loginAlert = document.getElementById('loginAlert');
-        const loginErrorMessage = document.getElementById('loginErrorMessage');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const adminName = document.getElementById('adminName');
-        const addNewsBtn = document.getElementById('addNewsBtn');
-        const newsModal = document.getElementById('newsModal');
-        const modalClose = document.getElementById('modalClose');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const newsForm = document.getElementById('newsForm');
-        const modalTitle = document.getElementById('modalTitle');
-        const newsId = document.getElementById('newsId');
-        const newsTitle = document.getElementById('newsTitle');
-        const newsDescription = document.getElementById('newsDescription');
-        const newsDate = document.getElementById('newsDate');
-        const modalAlert = document.getElementById('modalAlert');
-        const saveBtn = document.getElementById('saveBtn');
-        const deleteModal = document.getElementById('deleteModal');
-        const deleteModalClose = document.getElementById('deleteModalClose');
-        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-        const searchInput = document.getElementById('searchInput');
-        const sortFilter = document.getElementById('sortFilter');
-        const viewNewsModal = document.getElementById('viewNewsModal');
-        const viewModalClose = document.getElementById('viewModalClose');
-        const closeViewBtn = document.getElementById('closeViewBtn');
-        const viewNewsTitle = document.getElementById('viewNewsTitle');
-        const viewNewsDateText = document.getElementById('viewNewsDateText');
-        const viewNewsDescription = document.getElementById('viewNewsDescription');
-        const newsTable = document.getElementById('newsTable');
-        const newsTableBody = document.getElementById('newsTableBody');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const emptyState = document.getElementById('emptyState');
-        const pagination = document.getElementById('pagination');
-        const totalNews = document.getElementById('totalNews');
-        const monthNews = document.getElementById('monthNews');
+            if (authToken) { showAdminPanel(); fetchNews(); }
 
-        // Check authentication on load
-        if (authToken) {
-            showAdminPanel();
-            fetchNews();
-        }
-
-        // Login handler
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            loginBtn.disabled = true;
-            loginBtn.querySelector('.btn-text').style.display = 'none';
-            loginBtn.querySelector('.fa-spinner').style.display = 'inline-block';
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/auth/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    authToken = data.accessToken || data.token;
-                    currentUser = data.user;
-                    localStorage.setItem('adminToken', authToken);
-                    localStorage.setItem('adminUser', JSON.stringify(data.user));
-                    
-                    showAdminPanel();
-                    fetchNews();
-                    loginForm.reset();
-                    loginAlert.style.display = 'none';
-                } else {
-                    showLoginError(data.message || 'Invalid email or password');
-                }
-            } catch (error) {
-                console.error('Login error:', error);
-                showLoginError('Network error. Please try again.');
-            } finally {
-                loginBtn.disabled = false;
-                loginBtn.querySelector('.btn-text').style.display = 'inline-block';
-                loginBtn.querySelector('.fa-spinner').style.display = 'none';
-            }
-        });
-
-        function showLoginError(message) {
-            loginErrorMessage.textContent = message;
-            loginAlert.style.display = 'flex';
-            setTimeout(() => loginAlert.style.display = 'none', 5000);
-        }
-
-        function showAdminPanel() {
-            loginPage.style.display = 'none';
-            adminPanel.style.display = 'block';
-            if (currentUser.name) adminName.textContent = currentUser.name;
-        }
-
-        // Logout handler
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('adminUser');
-            authToken = null;
-            currentUser = {};
-            loginPage.style.display = 'flex';
-            adminPanel.style.display = 'none';
-        });
-
-        // Fetch news from API
-        async function fetchNews() {
-            showLoading(true);
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/news`, {
-                    headers: { 'Authorization': `Bearer ${authToken}` }
-                });
-                
-                if (!response.ok) {
-                    if (response.status === 401) logoutBtn.click();
-                    throw new Error('Failed to fetch news');
-                }
-                
-                const data = await response.json();
-                newsData = Array.isArray(data) ? data : (data.data || data.news || []);
-                
-                updateStatistics();
-                applyFiltersAndRender();
-            } catch (error) {
-                console.error('Error fetching news:', error);
-                showError('Failed to load news. Please refresh the page.');
-            } finally {
-                showLoading(false);
-            }
-        }
-
-        function updateStatistics() {
-            totalNews.textContent = newsData.length;
-            
-            const now = new Date();
-            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-            const monthNewsCount = newsData.filter(news => {
-                const newsDate = new Date(news.createdAt || news.date);
-                return newsDate >= monthStart;
-            }).length;
-            
-            monthNews.textContent = monthNewsCount;
-        }
-
-        function applyFiltersAndRender() {
-            let filteredData = [...newsData];
-            
-            if (currentFilters.search) {
-                const searchTerm = currentFilters.search.toLowerCase();
-                filteredData = filteredData.filter(news => 
-                    (news.title || '').toLowerCase().includes(searchTerm) ||
-                    (news.description || '').toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            filteredData.sort((a, b) => {
-                const dateA = new Date(a.createdAt || a.date || 0);
-                const dateB = new Date(b.createdAt || b.date || 0);
-                const titleA = (a.title || '').toLowerCase();
-                const titleB = (b.title || '').toLowerCase();
-                
-                switch (currentFilters.sort) {
-                    case 'newest': return dateB - dateA;
-                    case 'oldest': return dateA - dateB;
-                    case 'title': return titleA.localeCompare(titleB);
-                    default: return 0;
-                }
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value, password = document.getElementById('password').value;
+                loginBtn.disabled = true; loginBtn.querySelector('.btn-text').style.display='none'; loginBtn.querySelector('.fa-spinner').style.display='inline-block';
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/auth/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email,password}) });
+                    const data = await resp.json();
+                    if (resp.ok) {
+                        authToken = data.accessToken || data.token; currentUser = data.user || {};
+                        localStorage.setItem('adminToken', authToken); localStorage.setItem('adminUser', JSON.stringify(data.user));
+                        showAdminPanel(); fetchNews(); loginForm.reset(); loginAlert.style.display='none';
+                    } else { showLoginError(data.message || 'Invalid'); }
+                } catch { showLoginError('Network error'); }
+                finally { loginBtn.disabled=false; loginBtn.querySelector('.btn-text').style.display='inline'; loginBtn.querySelector('.fa-spinner').style.display='none'; }
             });
-            
-            renderNewsTable(filteredData);
-            renderPagination(filteredData.length);
-        }
 
-        function renderNewsTable(data) {
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const pageData = data.slice(start, end);
-            
-            if (data.length === 0) {
-                newsTable.style.display = 'none';
-                emptyState.style.display = 'block';
-                return;
+            function showLoginError(m) { loginErrorMessage.textContent=m; loginAlert.style.display='flex'; setTimeout(()=>loginAlert.style.display='none',4000); }
+            function showAdminPanel() { loginPage.style.display='none'; adminPanel.style.display='block'; if (currentUser.name) adminName.textContent=currentUser.name; }
+
+            logoutBtn.addEventListener('click', ()=>{ localStorage.removeItem('adminToken'); localStorage.removeItem('adminUser'); authToken=null; loginPage.style.display='flex'; adminPanel.style.display='none'; });
+
+            async function fetchNews() {
+                showLoading(true);
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/news`, { headers: { Authorization: `Bearer ${authToken}` } });
+                    if (!resp.ok) { if(resp.status===401) logoutBtn.click(); throw new Error(); }
+                    const data = await resp.json(); newsData = Array.isArray(data) ? data : (data.data || data.news || []);
+                    updateStats(); applyFiltersAndRender();
+                } catch { showError('Could not load.'); } finally { showLoading(false); }
             }
-            
-            newsTable.style.display = 'table';
-            emptyState.style.display = 'none';
-            
-            newsTableBody.innerHTML = pageData.map(news => {
-                const date = new Date(news.createdAt || news.date || new Date()).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
-                
-                const previewText = (news.description || '').substring(0, 150) + 
-                    ((news.description || '').length > 150 ? '...' : '');
-                
-                return `
-                    <tr>
-                        <td class="news-title">${escapeHtml(news.title || 'Untitled')}</td>
-                        <td class="news-preview">${escapeHtml(previewText)}</td>
-                        <td class="news-date">${date}</td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="action-btn view-btn" onclick="viewNews('${news._id}')" title="View Article">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="action-btn edit-btn" onclick="editNews('${news._id}')" title="Edit Article">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="action-btn delete-btn" onclick="openDeleteModal('${news._id}')" title="Delete Article">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function renderPagination(totalItems) {
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            
-            if (totalPages <= 1) {
-                pagination.innerHTML = '';
-                return;
+            function updateStats() {
+                totalNewsSpan.textContent = newsData.length;
+                const now = new Date(), monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+                const mCount = newsData.filter(n => new Date(n.createdAt||n.date||0) >= monthStart).length;
+                monthNewsSpan.textContent = mCount;
             }
-            
-            let pagesHTML = '';
-            
-            pagesHTML += `
-                <button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            `;
-            
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-                    pagesHTML += `
-                        <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">
-                            ${i}
-                        </button>
-                    `;
-                } else if (i === currentPage - 3 || i === currentPage + 3) {
-                    pagesHTML += `<span class="page-dots">...</span>`;
-                }
+
+            function applyFiltersAndRender() {
+                let filtered = [...newsData];
+                if (currentFilters.search) { const s = currentFilters.search.toLowerCase(); filtered = filtered.filter(n => (n.title||'').toLowerCase().includes(s) || (n.description||'').toLowerCase().includes(s)); }
+                filtered.sort((a,b)=>{ const da=new Date(a.createdAt||a.date||0), db=new Date(b.createdAt||b.date||0); if(currentFilters.sort==='newest') return db-da; if(currentFilters.sort==='oldest') return da-db; return (a.title||'').localeCompare(b.title||''); });
+                renderCards(filtered); renderPagination(filtered.length);
             }
-            
-            pagesHTML += `
-                <button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            `;
-            
-            pagination.innerHTML = pagesHTML;
-        }
 
-        window.changePage = (page) => {
-            currentPage = page;
-            applyFiltersAndRender();
-        };
-
-        // Filter event listeners
-        searchInput.addEventListener('input', debounce((e) => {
-            currentFilters.search = e.target.value;
-            currentPage = 1;
-            applyFiltersAndRender();
-        }, 300));
-
-        sortFilter.addEventListener('change', (e) => {
-            currentFilters.sort = e.target.value;
-            currentPage = 1;
-            applyFiltersAndRender();
-        });
-
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func(...args), wait);
-            };
-        }
-
-        function showLoading(show) {
-            loadingIndicator.style.display = show ? 'block' : 'none';
-            if (show) {
-                newsTable.style.display = 'none';
-                emptyState.style.display = 'none';
+            function renderCards(items) {
+                const start = (currentPage-1)*itemsPerPage, end = start+itemsPerPage, pageItems = items.slice(start, end);
+                if (items.length===0) { newsCardList.style.display='none'; emptyState.style.display='block'; return; }
+                newsCardList.style.display='flex'; emptyState.style.display='none';
+                newsCardList.innerHTML = pageItems.map(n => {
+                    const date = new Date(n.createdAt||n.date||Date.now()).toLocaleDateString('en-US',{ month:'short', day:'numeric', year:'numeric' });
+                    const preview = (n.description||'').substring(0,110)+((n.description||'').length>110?'…':'');
+                    return `<div class="news-card">
+                        <div class="news-card-header"><span class="news-card-title">${escapeHtml(n.title||'')}</span><span class="news-card-date">${date}</span></div>
+                        <div class="news-card-preview">${escapeHtml(preview)}</div>
+                        <div class="news-card-actions">
+                            <button class="card-action-btn view-btn-card" onclick="viewNews('${n._id}')"><i class="fas fa-eye"></i> View</button>
+                            <button class="card-action-btn edit-btn-card" onclick="editNews('${n._id}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="card-action-btn delete-btn-card" onclick="openDeleteModal('${n._id}')"><i class="fas fa-trash"></i> Del</button>
+                        </div>
+                    </div>`;
+                }).join('');
             }
-        }
 
-        function showError(message) {
-            emptyState.innerHTML = `
-                <i class="fas fa-exclamation-circle" style="color: var(--danger-color);"></i>
-                <h3>Error Loading News</h3>
-                <p>${message}</p>
-            `;
-            emptyState.style.display = 'block';
-            newsTable.style.display = 'none';
-        }
+            window.viewNews = async (id) => { try { const r = await fetch(`${API_BASE_URL}/news/${id}`,{headers:{Authorization:`Bearer ${authToken}`}}); if(r.ok) openViewModal(await r.json()); } catch(e){} };
+            window.editNews = async (id) => { try { const r = await fetch(`${API_BASE_URL}/news/${id}`,{headers:{Authorization:`Bearer ${authToken}`}}); if(r.ok) openNewsModal(await r.json()); } catch(e){} };
+            window.openDeleteModal = (id) => { deleteTargetId = id; deleteModal.classList.add('active'); };
 
-        // Modal handlers
-        addNewsBtn.addEventListener('click', () => openNewsModal());
-
-        function openNewsModal(news = null) {
-            modalTitle.innerHTML = news ? 
-                '<i class="fas fa-edit"></i><span>Edit News Article</span>' : 
-                '<i class="fas fa-plus-circle"></i><span>Create News Article</span>';
-            
-            if (news) {
-                newsId.value = news._id || '';
-                newsTitle.value = news.title || '';
-                newsDescription.value = news.description || '';
-                if (news.date) {
-                    const date = new Date(news.date);
-                    newsDate.value = date.toISOString().slice(0, 16);
-                }
-            } else {
-                newsId.value = '';
-                newsTitle.value = '';
-                newsDescription.value = '';
-                newsDate.value = new Date().toISOString().slice(0, 16);
+            function openViewModal(n) {
+                viewNewsTitle.textContent = n.title||'';
+                const d = new Date(n.date||n.createdAt||new Date()); viewNewsDateText.textContent = d.toLocaleDateString('en-US',{ year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' });
+                viewNewsDescription.textContent = n.description||'';
+                viewNewsModal.classList.add('active');
             }
-            
-            modalAlert.style.display = 'none';
-            newsModal.classList.add('active');
-        }
 
-        // Close modal handlers
-        [modalClose, cancelBtn].forEach(btn => {
-            btn.addEventListener('click', () => newsModal.classList.remove('active'));
-        });
+            function openNewsModal(n) {
+                modalTitle.innerHTML = n ? '<i class="fas fa-edit"></i><span>Edit</span>' : '<i class="fas fa-plus-circle"></i><span>New article</span>';
+                newsId.value = n?._id||'';
+                newsTitle.value = n?.title||'';
+                newsDescription.value = n?.description||'';
+                if (n?.date) { const d = new Date(n.date); newsDate.value = d.toISOString().slice(0,16); }
+                else { newsDate.value = new Date().toISOString().slice(0,16); }
+                modalAlert.style.display='none'; newsModal.classList.add('active');
+            }
 
-        [deleteModalClose, cancelDeleteBtn].forEach(btn => {
-            btn.addEventListener('click', () => {
-                deleteModal.classList.remove('active');
-                deleteTargetId = null;
+            [modalClose, cancelBtn].forEach(b=>b.addEventListener('click',()=>newsModal.classList.remove('active')));
+            [deleteModalClose, cancelDeleteBtn].forEach(b=>b.addEventListener('click',()=>{ deleteModal.classList.remove('active'); deleteTargetId=null; }));
+            [viewModalClose, closeViewBtn].forEach(b=>b.addEventListener('click',()=>viewNewsModal.classList.remove('active')));
+            window.addEventListener('click', e => { if(e.target===newsModal) newsModal.classList.remove('active'); if(e.target===deleteModal) { deleteModal.classList.remove('active'); deleteTargetId=null; } if(e.target===viewNewsModal) viewNewsModal.classList.remove('active'); });
+
+            confirmDeleteBtn.addEventListener('click', async ()=>{
+                if(!deleteTargetId) return;
+                confirmDeleteBtn.disabled=true; confirmDeleteBtn.querySelector('.btn-text').style.display='none'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='inline-block';
+                try{ await fetch(`${API_BASE_URL}/news/${deleteTargetId}`,{ method:'DELETE', headers:{Authorization:`Bearer ${authToken}`} }); deleteModal.classList.remove('active'); fetchNews(); }catch(e){ alert('Error'); } finally { confirmDeleteBtn.disabled=false; confirmDeleteBtn.querySelector('.btn-text').style.display='inline'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='none'; deleteTargetId=null; }
             });
-        });
 
-        [viewModalClose, closeViewBtn].forEach(btn => {
-            btn.addEventListener('click', () => viewNewsModal.classList.remove('active'));
-        });
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === newsModal) newsModal.classList.remove('active');
-            if (e.target === deleteModal) {
-                deleteModal.classList.remove('active');
-                deleteTargetId = null;
-            }
-            if (e.target === viewNewsModal) viewNewsModal.classList.remove('active');
-        });
-
-        // View news
-        window.viewNews = async (id) => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/news/${id}`, {
-                    headers: { 'Authorization': `Bearer ${authToken}` }
-                });
-                
-                if (response.ok) {
-                    const news = await response.json();
-                    openViewModal(news);
-                }
-            } catch (error) {
-                console.error('Error fetching news:', error);
-            }
-        };
-
-        function openViewModal(news) {
-            viewNewsTitle.textContent = news.title || 'Untitled';
-            
-            const date = new Date(news.date || news.createdAt || new Date());
-            viewNewsDateText.textContent = date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
+            newsForm.addEventListener('submit', async (e)=>{
+                e.preventDefault();
+                const id = newsId.value, title = newsTitle.value.trim(), desc = newsDescription.value.trim(), date = newsDate.value;
+                if(!title||!desc||!date) { showModalError('All fields required'); return; }
+                saveBtn.disabled=true; saveBtn.querySelector('.btn-text').style.display='none'; saveBtn.querySelector('.fa-spinner').style.display='inline-block';
+                const payload = { title, description: desc, date: new Date(date).toISOString() };
+                try {
+                    const url = id ? `${API_BASE_URL}/news/${id}` : `${API_BASE_URL}/news`;
+                    const resp = await fetch(url, { method: id?'PUT':'POST', headers:{'Content-Type':'application/json', Authorization:`Bearer ${authToken}`}, body:JSON.stringify(payload) });
+                    if (resp.ok) { newsModal.classList.remove('active'); fetchNews(); } else { const er = await resp.json(); showModalError(er.message||'Error'); }
+                } catch { showModalError('Network error'); } finally { saveBtn.disabled=false; saveBtn.querySelector('.btn-text').style.display='inline'; saveBtn.querySelector('.fa-spinner').style.display='none'; }
             });
-            
-            viewNewsDescription.textContent = news.description || 'No description available.';
-            viewNewsModal.classList.add('active');
-        }
 
-        // Edit news
-        window.editNews = async (id) => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/news/${id}`, {
-                    headers: { 'Authorization': `Bearer ${authToken}` }
-                });
-                
-                if (response.ok) {
-                    const news = await response.json();
-                    openNewsModal(news);
-                }
-            } catch (error) {
-                console.error('Error fetching news:', error);
+            function showModalError(m) { modalAlert.textContent=m; modalAlert.style.display='flex'; setTimeout(()=>modalAlert.style.display='none',4000); }
+
+            searchInput.addEventListener('input', debounce((e)=>{ currentFilters.search=e.target.value; currentPage=1; applyFiltersAndRender(); },300));
+            sortFilter.addEventListener('change', (e)=>{ currentFilters.sort=e.target.value; currentPage=1; applyFiltersAndRender(); });
+
+            function renderPagination(total) {
+                const pages = Math.ceil(total/itemsPerPage);
+                if(pages<=1) { paginationDiv.innerHTML=''; return; }
+                let html = `<button class="page-btn" onclick="changePage(${currentPage-1})" ${currentPage===1?'disabled':''}><i class="fas fa-chevron-left"></i></button>`;
+                for(let i=1;i<=pages;i++) { if(i===1||i===pages||(i>=currentPage-2&&i<=currentPage+2)) html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="changePage(${i})">${i}</button>`; else if(i===currentPage-3||i===currentPage+3) html+=`<span class="page-dots">...</span>`; }
+                html+=`<button class="page-btn" onclick="changePage(${currentPage+1})" ${currentPage===pages?'disabled':''}><i class="fas fa-chevron-right"></i></button>`;
+                paginationDiv.innerHTML = html;
             }
-        };
+            window.changePage = (p) => { currentPage = p; applyFiltersAndRender(); };
 
-        // Delete modal
-        window.openDeleteModal = (id) => {
-            deleteTargetId = id;
-            deleteModal.classList.add('active');
-        };
+            addNewsBtn.addEventListener('click',()=>openNewsModal(null));
 
-        // Confirm delete
-        confirmDeleteBtn.addEventListener('click', async () => {
-            if (!deleteTargetId) return;
-            
-            confirmDeleteBtn.disabled = true;
-            confirmDeleteBtn.querySelector('.btn-text').style.display = 'none';
-            confirmDeleteBtn.querySelector('.fa-spinner').style.display = 'inline-block';
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/news/${deleteTargetId}`, {
-                    method: 'DELETE',
-                    headers: { 'Authorization': `Bearer ${authToken}` }
-                });
-                
-                if (response.ok) {
-                    deleteModal.classList.remove('active');
-                    fetchNews();
-                } else {
-                    alert('Failed to delete news article');
-                }
-            } catch (error) {
-                console.error('Error deleting news:', error);
-                alert('Network error. Please try again.');
-            } finally {
-                confirmDeleteBtn.disabled = false;
-                confirmDeleteBtn.querySelector('.btn-text').style.display = 'inline-block';
-                confirmDeleteBtn.querySelector('.fa-spinner').style.display = 'none';
-                deleteTargetId = null;
-            }
-        });
-
-        // Save news
-        newsForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const id = newsId.value;
-            const title = newsTitle.value.trim();
-            const description = newsDescription.value.trim();
-            const date = newsDate.value;
-            
-            if (!title || !description || !date) {
-                showModalError('Please fill in all required fields');
-                return;
-            }
-            
-            saveBtn.disabled = true;
-            saveBtn.querySelector('.btn-text').style.display = 'none';
-            saveBtn.querySelector('.fa-spinner').style.display = 'inline-block';
-            
-            const newsData = {
-                title,
-                description,
-                date: new Date(date).toISOString()
-            };
-
-            try {
-                const url = id ? `${API_BASE_URL}/news/${id}` : `${API_BASE_URL}/news`;
-                const method = id ? 'PUT' : 'POST';
-                
-                const response = await fetch(url, {
-                    method,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${authToken}`
-                    },
-                    body: JSON.stringify(newsData)
-                });
-                
-                if (response.ok) {
-                    newsModal.classList.remove('active');
-                    fetchNews();
-                } else {
-                    const data = await response.json();
-                    showModalError(data.message || 'Failed to save news article');
-                }
-            } catch (error) {
-                console.error('Error saving news:', error);
-                showModalError('Network error. Please try again.');
-            } finally {
-                saveBtn.disabled = false;
-                saveBtn.querySelector('.btn-text').style.display = 'inline-block';
-                saveBtn.querySelector('.fa-spinner').style.display = 'none';
-            }
-        });
-
-        function showModalError(message) {
-            modalAlert.textContent = message;
-            modalAlert.style.display = 'block';
-            setTimeout(() => modalAlert.style.display = 'none', 5000);
-        }
+            function showLoading(show) { loadingIndicator.style.display = show?'block':'none'; if(show) { newsCardList.style.display='none'; emptyState.style.display='none'; } }
+            function showError(m) { emptyState.innerHTML=`<i class="fas fa-exclamation-circle" style="color:var(--danger-color);"></i><h3>Error</h3><p>${m}</p>`; emptyState.style.display='block'; newsCardList.style.display='none'; }
+            function escapeHtml(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+            function debounce(f,w){ let t; return function(...a){ clearTimeout(t); t=setTimeout(()=>f(...a),w); }; }
+        })();
     </script>
 </body>
 </html>
