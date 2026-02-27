@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Food Foundation - Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="shortcut icon" href="/image/HFA logo.jpeg" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a5c36;
+            --secondary-color: #1a7c4d;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --gray-color: #6c757d;
+            --danger-color: #dc3545;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+        }
+
+        .login-header h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(10, 92, 54, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .admin-container {
+            display: none;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        .admin-nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .nav-logo span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .user-role {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .logout-btn {
+            padding: 8px 15px;
+            background-color: transparent;
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .admin-main {
+            margin-top: 80px;
+            padding: 30px 20px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .page-header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .add-news-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-news-btn:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(10, 92, 54, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .stat-content h3 {
+            font-size: 1rem;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .filter-select {
+            padding: 12px 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            cursor: pointer;
+        }
+
+        .news-table-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .news-table th {
+            text-align: left;
+            padding: 15px 10px;
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .news-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .news-table tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        .news-title {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .news-preview {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .news-date {
+            color: var(--gray-color);
+            font-size: 0.85rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-published {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-draft {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            border: none;
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .edit-btn:hover {
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+        }
+
+        .delete-btn:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 2px solid #e9ecef;
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .page-btn:hover:not(.active) {
+            background-color: #e9ecef;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-color);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--danger-color);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray-color);
+        }
+
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: var(--gray-color);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            .news-table td {
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="/image/halal logo.png" alt="HFF Logo">
+                <h2>Admin Login</h2>
+                <p>Enter your credentials to access the admin panel</p>
+            </div>
+            
+            <div id="loginAlert" class="alert alert-danger" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="loginErrorMessage"></span>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="btn" id="loginBtn">
+                    <span class="btn-text">Login</span>
+                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>
+            </form>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="/" style="color: var(--primary-color); text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-container" id="adminPanel">
+        <nav class="admin-nav">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <img src="/image/halal logo.png" alt="HFF Logo">
+                    <span>Halal Food Foundation Admin</span>
+                </div>
+                <div class="nav-user">
+                    <div class="user-info">
+                        <div class="user-name" id="adminName">Admin User</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="admin-main">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>
+                    <i class="fas fa-newspaper" style="color: var(--primary-color);"></i>
+                    News Management
+                </h1>
+                <button class="add-news-btn" id="addNewsBtn">
+                    <i class="fas fa-plus-circle"></i>
+                    Add News Article
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total News</h3>
+                        <div class="stat-number" id="totalNews">0</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>This Month</h3>
+                        <div class="stat-number" id="monthNews">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search news by title or content...">
+                </div>
+
+                <select class="filter-select" id="sortFilter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">Sort by Title</option>
+                </select>
+            </div>
+
+            <!-- News Table -->
+            <div class="news-table-container">
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading news...</p>
+                </div>
+                
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>No News Articles Found</h3>
+                    <p>Click the "Add News Article" button to create your first news item.</p>
+                </div>
+
+                <table class="news-table" id="newsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description Preview</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="newsTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+        </main>
+    </div>
+
+    <!-- Add/Edit News Modal -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add News Article</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="newsForm">
+                <div class="modal-body">
+                    <div id="modalAlert" class="alert alert-danger" style="display: none;"></div>
+                    
+                    <input type="hidden" id="newsId">
+                    
+                    <div class="form-group">
+                        <label for="newsTitle">Title *</label>
+                        <input type="text" id="newsTitle" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newsDescription">Description *</label>
+                        <textarea id="newsDescription" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newsDate">Date *</label>
+                        <input type="datetime-local" id="newsDate" class="form-control" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn" id="saveBtn">
+                        <span class="btn-text">Save Article</span>
+                        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <button class="modal-close" id="deleteModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this news article? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <span class="btn-text">Delete</span>
+                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Base URL
+        const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
+
+        
+        // State management
+        let authToken = localStorage.getItem('adminToken');
+        let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
+        let newsData = [];
+        let currentPage = 1;
+        let itemsPerPage = 10;
+        let currentFilters = {
+            search: '',
+            status: 'all',
+            sort: 'newest'
+        };
+        let deleteTargetId = null;
+
+        // DOM Elements
+        const loginPage = document.getElementById('loginPage');
+        const adminPanel = document.getElementById('adminPanel');
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginAlert = document.getElementById('loginAlert');
+        const loginErrorMessage = document.getElementById('loginErrorMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const adminName = document.getElementById('adminName');
+        const addNewsBtn = document.getElementById('addNewsBtn');
+        const newsModal = document.getElementById('newsModal');
+        const modalClose = document.getElementById('modalClose');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const newsForm = document.getElementById('newsForm');
+        const modalTitle = document.getElementById('modalTitle');
+        const newsId = document.getElementById('newsId');
+        const newsTitle = document.getElementById('newsTitle');
+        const newsDescription = document.getElementById('newsDescription');
+        const newsDate = document.getElementById('newsDate');
+
+        const modalAlert = document.getElementById('modalAlert');
+        const saveBtn = document.getElementById('saveBtn');
+        const deleteModal = document.getElementById('deleteModal');
+        const deleteModalClose = document.getElementById('deleteModalClose');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        const searchInput = document.getElementById('searchInput');
+        const sortFilter = document.getElementById('sortFilter');
+
+        const newsTable = document.getElementById('newsTable');
+        const newsTableBody = document.getElementById('newsTableBody');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const emptyState = document.getElementById('emptyState');
+        const pagination = document.getElementById('pagination');
+        const totalNews = document.getElementById('totalNews');
+        const monthNews = document.getElementById('monthNews');
+
+
+        // Check authentication on load
+        if (authToken) {
+            showAdminPanel();
+            fetchNews();
+        }
+
+        // Login handler
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Show loading state
+            loginBtn.disabled = true;
+            loginBtn.querySelector('.btn-text').style.display = 'none';
+            loginBtn.querySelector('.fa-spinner').style.display = 'inline-block';
+            
+            try {
+                
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Save token and user info
+                    authToken = data.accessToken || data.token;
+                    currentUser = data.user;
+                    localStorage.setItem('adminToken', data.accessToken || data.token);
+                    localStorage.setItem('adminUser', JSON.stringify(data.user));
+                    
+                    // Show admin panel
+                    showAdminPanel();
+                    fetchNews();
+                    
+                    // Clear login form
+                    loginForm.reset();
+                    loginAlert.style.display = 'none';
+                } else {
+                    // Show error
+                    showLoginError(data.message || 'Invalid email or password');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showLoginError('Network error. Please try again.');
+            } finally {
+                // Reset button state
+                loginBtn.disabled = false;
+                loginBtn.querySelector('.btn-text').style.display = 'inline-block';
+                loginBtn.querySelector('.fa-spinner').style.display = 'none';
+            }
+        });
+
+        function showLoginError(message) {
+            loginErrorMessage.textContent = message;
+            loginAlert.style.display = 'flex';
+            
+            setTimeout(() => {
+                loginAlert.style.display = 'none';
+            }, 5000);
+        }
+
+        function showAdminPanel() {
+            loginPage.style.display = 'none';
+            adminPanel.style.display = 'block';
+            
+            if (currentUser.name) {
+                adminName.textContent = currentUser.name;
+            }
+        }
+
+        // Logout handler
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
+            authToken = null;
+            currentUser = {};
+            
+            loginPage.style.display = 'flex';
+            adminPanel.style.display = 'none';
+        });
+
+        // Fetch news from API
+        async function fetchNews() {
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/news`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // Token expired, redirect to login
+                        logoutBtn.click();
+                        return;
+                    }
+                    throw new Error('Failed to fetch news');
+                }
+                
+                const data = await response.json();
+                // Handle both array response and object with data property
+                newsData = Array.isArray(data) ? data : (data.data || data.news || []);
+                
+                updateStatistics();
+
+                applyFiltersAndRender();
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                showError('Failed to load news. Please refresh the page.');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function updateStatistics() {
+            totalNews.textContent = newsData.length;
+            
+            // Calculate news from this month
+            const now = new Date();
+            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+            const monthNewsCount = newsData.filter(news => {
+                const newsDate = new Date(news.createdAt || news.date);
+                return newsDate >= monthStart;
+            }).length;
+            
+            monthNews.textContent = monthNewsCount;
+        }
+
+
+        function applyFiltersAndRender() {
+            let filteredData = [...newsData];
+            
+            // Apply search filter
+            if (currentFilters.search) {
+                const searchTerm = currentFilters.search.toLowerCase();
+                filteredData = filteredData.filter(news => 
+                    (news.title || '').toLowerCase().includes(searchTerm) ||
+                    (news.description || '').toLowerCase().includes(searchTerm)
+                );
+            }
+
+            
+            // Apply sorting
+            filteredData.sort((a, b) => {
+                const dateA = new Date(a.createdAt || a.date || 0);
+                const dateB = new Date(b.createdAt || b.date || 0);
+                const titleA = (a.title || '').toLowerCase();
+                const titleB = (b.title || '').toLowerCase();
+                
+                switch (currentFilters.sort) {
+                    case 'newest':
+                        return dateB - dateA;
+                    case 'oldest':
+                        return dateA - dateB;
+                    case 'title':
+                        return titleA.localeCompare(titleB);
+                    default:
+                        return 0;
+                }
+            });
+            
+            renderNewsTable(filteredData);
+            renderPagination(filteredData.length);
+        }
+
+        function renderNewsTable(data) {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageData = data.slice(start, end);
+            
+            if (data.length === 0) {
+                newsTable.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            newsTable.style.display = 'table';
+            emptyState.style.display = 'none';
+            
+            newsTableBody.innerHTML = pageData.map(news => {
+                const date = new Date(news.createdAt || news.date || new Date()).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                
+                const descriptionPreview = (news.description || '').substring(0, 150);
+                const previewText = descriptionPreview + (news.description && news.description.length > 150 ? '...' : '');
+                
+                return `
+                    <tr>
+                        <td class="news-title">${escapeHtml(news.title || 'Untitled')}</td>
+                        <td class="news-preview">${escapeHtml(previewText)}</td>
+                        <td class="news-date">${date}</td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn view-btn" onclick="viewNews('${news._id}')" title="View">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn edit-btn" onclick="editNews('${news._id}')" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn delete-btn" onclick="openDeleteModal('${news._id}')" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let pagesHTML = '';
+            
+            // Previous button
+            pagesHTML += `
+                <button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    pagesHTML += `
+                        <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    pagesHTML += `<span class="page-dots">...</span>`;
+                }
+            }
+            
+            // Next button
+            pagesHTML += `
+                <button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            pagination.innerHTML = pagesHTML;
+        }
+
+        window.changePage = (page) => {
+            currentPage = page;
+            applyFiltersAndRender();
+        };
+
+        // Filter event listeners
+        searchInput.addEventListener('input', debounce((e) => {
+            currentFilters.search = e.target.value;
+            currentPage = 1;
+            applyFiltersAndRender();
+        }, 300));
+
+        sortFilter.addEventListener('change', (e) => {
+
+            currentFilters.sort = e.target.value;
+            currentPage = 1;
+            applyFiltersAndRender();
+        });
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function showLoading(show) {
+            loadingIndicator.style.display = show ? 'block' : 'none';
+            newsTable.style.display = show ? 'none' : 'table';
+            emptyState.style.display = 'none';
+        }
+
+        function showError(message) {
+            emptyState.innerHTML = `
+                <i class="fas fa-exclamation-circle" style="color: var(--danger-color);"></i>
+                <h3>Error Loading News</h3>
+                <p>${message}</p>
+            `;
+            emptyState.style.display = 'block';
+            newsTable.style.display = 'none';
+        }
+
+        // Modal handlers
+        addNewsBtn.addEventListener('click', () => {
+            openNewsModal();
+        });
+
+        function openNewsModal(news = null) {
+            if (news) {
+                modalTitle.textContent = 'Edit News Article';
+                newsId.value = news._id || '';
+                newsTitle.value = news.title || '';
+                newsDescription.value = news.description || '';
+                
+                if (news.date) {
+                    const date = new Date(news.date);
+                    newsDate.value = date.toISOString().slice(0, 16);
+                } else {
+                    newsDate.value = '';
+                }
+            } else {
+                modalTitle.textContent = 'Add News Article';
+                newsId.value = '';
+                newsTitle.value = '';
+                newsDescription.value = '';
+                newsDate.value = new Date().toISOString().slice(0, 16);
+            }
+            
+            modalAlert.style.display = 'none';
+            newsModal.classList.add('active');
+        }
+
+
+        modalClose.addEventListener('click', () => {
+            newsModal.classList.remove('active');
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            newsModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === newsModal) {
+                newsModal.classList.remove('active');
+            }
+            if (e.target === deleteModal) {
+                deleteModal.classList.remove('active');
+            }
+        });
+
+        // View news
+        window.viewNews = async (id) => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/news/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const news = await response.json();
+                    openNewsModal(news);
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        };
+
+        // Edit news
+        window.editNews = async (id) => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/news/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const news = await response.json();
+                    openNewsModal(news);
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        };
+
+        // Delete modal
+        window.openDeleteModal = (id) => {
+            deleteTargetId = id;
+            deleteModal.classList.add('active');
+        };
+
+        deleteModalClose.addEventListener('click', () => {
+            deleteModal.classList.remove('active');
+            deleteTargetId = null;
+        });
+
+        cancelDeleteBtn.addEventListener('click', () => {
+            deleteModal.classList.remove('active');
+            deleteTargetId = null;
+        });
+
+        // Confirm delete
+        confirmDeleteBtn.addEventListener('click', async () => {
+            if (!deleteTargetId) return;
+            
+            confirmDeleteBtn.disabled = true;
+            confirmDeleteBtn.querySelector('.btn-text').style.display = 'none';
+            confirmDeleteBtn.querySelector('.fa-spinner').style.display = 'inline-block';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/news/${deleteTargetId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                
+                if (response.ok) {
+                    // Close modal and refresh
+                    deleteModal.classList.remove('active');
+                    fetchNews();
+                } else {
+                    alert('Failed to delete news article');
+                }
+            } catch (error) {
+                console.error('Error deleting news:', error);
+                alert('Network error. Please try again.');
+            } finally {
+                confirmDeleteBtn.disabled = false;
+                confirmDeleteBtn.querySelector('.btn-text').style.display = 'inline-block';
+                confirmDeleteBtn.querySelector('.fa-spinner').style.display = 'none';
+                deleteTargetId = null;
+            }
+        });
+
+        // Save news
+        newsForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const id = newsId.value;
+            const title = newsTitle.value.trim();
+            const description = newsDescription.value.trim();
+            const date = newsDate.value;
+            
+            if (!title || !description || !date) {
+                showModalError('Please fill in all required fields');
+                return;
+            }
+            
+            saveBtn.disabled = true;
+            saveBtn.querySelector('.btn-text').style.display = 'none';
+            saveBtn.querySelector('.fa-spinner').style.display = 'inline-block';
+            
+            const newsData = {
+                title,
+                description,
+                date: new Date(date).toISOString()
+            };
+
+            
+            try {
+                const url = id ? `${API_BASE_URL}/news/${id}` : `${API_BASE_URL}/news`;
+                const method = id ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(newsData)
+                });
+                
+                if (response.ok) {
+                    // Success
+                    newsModal.classList.remove('active');
+                    fetchNews();
+                } else {
+                    const data = await response.json();
+                    showModalError(data.message || 'Failed to save news article');
+                }
+            } catch (error) {
+                console.error('Error saving news:', error);
+                showModalError('Network error. Please try again.');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.querySelector('.btn-text').style.display = 'inline-block';
+                saveBtn.querySelector('.fa-spinner').style.display = 'none';
+            }
+        });
+
+        function showModalError(message) {
+            modalAlert.textContent = message;
+            modalAlert.style.display = 'block';
+            
+            setTimeout(() => {
+                modalAlert.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
