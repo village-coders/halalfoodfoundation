@@ -2532,9 +2532,11 @@
     <header>
         <div class="containerr header-container">
             <div class="logo-container">
-                <div class="logo-img">
+                <a href="./index.html">
+                    <div class="logo-img">
                    <img src="image/halal logo.png" alt="HCA Logo" class="logo-img">
                 </div>
+                </a>
                 <div class="logo-text">
                     <h1 data-translate="org_name">Halal Food Foundation</h1>
                     <p data-translate="org_tagline"> | Ensuring Halal Compliance</p>
@@ -5019,7 +5021,16 @@
                     // Simulate form submission
                     setTimeout(() => {
                         if (currentLanguage === 'en') {
-                            alert(`Thank you ${name}! Your message has been received. We will contact you at ${email} shortly.`);
+                            // Open email client with both recipients in BCC
+                            const subject = encodeURIComponent('Contact Form Submission');
+                            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBusiness: ${business}\nService: ${service}\n\nMessage:\n${message}`);
+                            const bcc = encodeURIComponent('info@halalfoodfoundation.co.uk,info@halalfoodauthority.co.uk');
+                            
+                            // Open email client
+                            window.location.href = `mailto:?subject=${subject}&body=${body}&bcc=${bcc}`;
+                            
+                            // Reset form after opening email client
+                            contactForm.reset();
                         } else if (currentLanguage === 'fr') {
                             alert(`Merci ${name}! Votre message a été reçu. Nous vous contacterons à ${email} sous peu.`);
                         } else if (currentLanguage === 'de') {

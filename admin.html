@@ -43,7 +43,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* ----- LOGIN (fully responsive) ----- */
         .login-container {
             min-height: 100vh;
             display: flex;
@@ -76,13 +75,9 @@
         }
 
         .login-header img {
-            /* width: 85px; */
             height: 85px;
             object-fit: cover;
-            /* border-radius: 50%; */
             margin-bottom: 10px;
-            /* border: 3px solid white; */
-            /* box-shadow: 0 6px 12px rgba(0,0,0,0.1); */
         }
 
         .login-header h2 {
@@ -183,7 +178,6 @@
             font-size: 0.9rem;
         }
 
-        /* ----- ADMIN PANEL (fully stacked + touch) ----- */
         .admin-container {
             display: none;
             min-height: 100vh;
@@ -219,7 +213,6 @@
         .nav-logo img {
             height: 80px;
             width: 80px;
-            /* border-radius: 50%; */
             object-fit: cover;
         }
         .nav-logo span {
@@ -276,7 +269,6 @@
             margin: 0 auto;
         }
 
-        /* stacked header */
         .page-header {
             display: flex;
             flex-direction: column;
@@ -313,7 +305,6 @@
             font-size: 1rem;
         }
 
-        /* stat cards → column on mobile */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -351,7 +342,6 @@
             color: var(--primary-color);
         }
 
-        /* filter bar stacked */
         .filter-bar {
             background: white;
             padding: 20px;
@@ -390,7 +380,6 @@
             -webkit-appearance: none;
         }
 
-        /* table → stacked cards on mobile (block display) */
         .news-table-container {
             background: transparent;
             padding: 0;
@@ -399,7 +388,7 @@
         }
 
         .news-table {
-            display: none; /* hidden, we use card layout */
+            display: none;
         }
 
         .news-card-list {
@@ -483,7 +472,6 @@
         .edit-btn-card i { color: #e67e22; }
         .delete-btn-card i { color: var(--danger-color); }
 
-        /* pagination touch */
         .pagination {
             display: flex;
             flex-wrap: wrap;
@@ -515,13 +503,12 @@
             background: #e6edf5;
         }
 
-        /* modals — fullscreen friendly */
         .modal {
             display: none;
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.6);
-            align-items: flex-end; /* bottom sheet on mobile */
+            align-items: flex-end;
             justify-content: center;
             z-index: 2000;
             padding: 0;
@@ -591,7 +578,6 @@
             margin: 0;
         }
 
-        /* view modal */
         .view-modal .modal-content { border-radius: 36px 36px 0 0; }
         .view-news-title {
             font-size: 1.8rem;
@@ -639,12 +625,10 @@
             .modal-footer { flex-direction: row; }
         }
 
-        /* table is hidden, we show cards */
         .news-table, #newsTable { display: none; }
     </style>
 </head>
 <body>
-    <!-- LOGIN PAGE (mobile ready) -->
     <div class="login-container" id="loginPage">
         <div class="login-card">
             <div class="login-header">
@@ -664,7 +648,6 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL (mobile optimized) -->
     <div class="admin-container" id="adminPanel">
         <nav class="admin-nav">
             <div class="nav-content">
@@ -692,20 +675,17 @@
                 <select class="filter-select" id="sortFilter"><option value="newest">📅 Newest</option><option value="oldest">📅 Oldest</option><option value="title">📝 Title</option></select>
             </div>
 
-            <!-- Card container (mobile) -->
             <div id="loadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading articles…</p></div>
             <div id="emptyState" class="empty-state" style="display: none;"><i class="fas fa-newspaper"></i><h3>No news</h3><p>Create your first article</p></div>
 
             <div id="newsCardList" class="news-card-list" style="display: none;"></div>
 
-            <!-- hidden old table (replaced) -->
             <table style="display: none;"><tbody id="newsTableBody"></tbody></table>
 
             <div class="pagination" id="pagination"></div>
         </main>
     </div>
 
-    <!-- Add/Edit Modal -->
     <div class="modal" id="newsModal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle"><i class="fas fa-plus-circle"></i><span>Article</span></h2><button class="modal-close" id="modalClose">&times;</button></div>
     <form id="newsForm"><div class="modal-body"><div id="modalAlert" class="alert alert-danger" style="display: none;"></div><input type="hidden" id="newsId">
     <div class="form-group"><label>Title *</label><input type="text" id="newsTitle" class="form-control" required></div>
@@ -713,10 +693,8 @@
     <div class="form-group"><label>Date *</label><input type="datetime-local" id="newsDate" class="form-control" required></div>
     </div><div class="modal-footer"><button type="button" class="btn btn-secondary" id="cancelBtn"><i class="fas fa-times"></i> Cancel</button><button type="submit" class="btn" id="saveBtn"><span class="btn-text">Save</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></form></div></div>
 
-    <!-- Delete modal -->
     <div class="modal" id="deleteModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-exclamation-triangle" style="color:#e74c3c;"></i> Confirm</h2><button class="modal-close" id="deleteModalClose">&times;</button></div><div class="modal-body"><p style="font-size:1.2rem;">Delete permanently?</p><p style="color:var(--danger-color);"> irreversible</p></div><div class="modal-footer"><button class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button><button class="btn btn-danger" id="confirmDeleteBtn"><span class="btn-text">Delete</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></div></div>
 
-    <!-- View modal -->
     <div class="modal view-modal" id="viewNewsModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-newspaper"></i> Preview</h2><button class="modal-close" id="viewModalClose">&times;</button></div><div class="modal-body"><div class="view-news-title" id="viewNewsTitle"></div><div class="view-news-date"><i class="fas fa-calendar-alt"></i><span id="viewNewsDateText"></span></div><div class="view-news-description" id="viewNewsDescription"></div></div><div class="modal-footer"><button class="btn btn-secondary" id="closeViewBtn">Close</button></div></div></div>
 
     <script>
@@ -725,11 +703,10 @@
             let authToken = localStorage.getItem('adminToken');
             let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
             let newsData = [];
-            let currentPage = 1, itemsPerPage = 5;  // less per page for mobile
+            let currentPage = 1, itemsPerPage = 5;
             let currentFilters = { search: '', sort: 'newest' };
             let deleteTargetId = null;
 
-            // DOM
             const loginPage = document.getElementById('loginPage');
             const adminPanel = document.getElementById('adminPanel');
             const loginForm = document.getElementById('loginForm');
