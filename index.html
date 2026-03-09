@@ -3172,7 +3172,7 @@
     </footer>
 
     <script>
-        const API_BASE_URL = 'https://halal-food-foundation-backend.vercel.app/api';
+        const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
         // Translation data for European languages
         const translations = {
             en: {
@@ -5486,7 +5486,7 @@
                 if (!newsList) return;
 
                 try {
-                    const response = await fetch(`${API_BASE_URL}/api/news`);
+                    const response = await fetch(`${API_BASE_URL}/news`);
                     if (!response.ok) {
                         throw new Error('Failed to fetch news');
                     }
