@@ -814,9 +814,10 @@
 
     <script>
         (function() {
-            const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-                ? 'http://localhost:400/api' 
-                : 'https://halal-food-foundation-backend.onrender.com/api';
+            // const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+            //     ? 'http://localhost:400/api' 
+            //     : 'https://halal-food-foundation-backend.onrender.com/api';
+            const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
             let authToken = localStorage.getItem('adminToken');
             let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
             let newsData = [];
