@@ -1090,7 +1090,8 @@
                         fetchTrustees();
                     } else {
                         const er = await resp.json();
-                        showTrusteeModalError(er.message || er.error || 'Error saving trustee');
+                        const errorMsg = er.message || er.error || (typeof er === 'string' ? er : 'Server Error');
+                        showTrusteeModalError(errorMsg);
                     }
                 } catch { showTrusteeModalError('Network error'); } 
                 finally {
