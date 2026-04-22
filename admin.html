@@ -625,6 +625,70 @@
             .modal-footer { flex-direction: row; }
         }
 
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            background: white;
+            padding: 8px;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(10, 92, 54, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e8edf2;
+            border-radius: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: white;
+            transition: var(--transition);
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(10,92,54,0.15);
+        }
+
         .news-table, #newsTable { display: none; }
     </style>
 </head>
@@ -660,29 +724,51 @@
         </nav>
 
         <main class="admin-main">
-            <div class="page-header">
-                <h1><i class="fas fa-newspaper"></i> News</h1>
-                <button class="btn add-news-btn" id="addNewsBtn"><i class="fas fa-plus-circle"></i> New article</button>
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="news-section"><i class="fas fa-newspaper"></i> News</button>
+                <button class="tab-btn" data-tab="trustees-section"><i class="fas fa-users"></i> Trustees</button>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-newspaper"></i></div><div class="stat-content"><h3>Total</h3><div class="stat-number" id="totalNews">0</div></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-alt"></i></div><div class="stat-content"><h3>This month</h3><div class="stat-number" id="monthNews">0</div></div></div>
+            <!-- News Section -->
+            <div id="news-section" class="tab-content active">
+                <div class="page-header">
+                    <h1><i class="fas fa-newspaper"></i> News</h1>
+                    <button class="btn add-news-btn" id="addNewsBtn"><i class="fas fa-plus-circle"></i> New article</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-newspaper"></i></div><div class="stat-content"><h3>Total</h3><div class="stat-number" id="totalNews">0</div></div></div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-alt"></i></div><div class="stat-content"><h3>This month</h3><div class="stat-number" id="monthNews">0</div></div></div>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Search news..."></div>
+                    <select class="filter-select" id="sortFilter"><option value="newest">📅 Newest</option><option value="oldest">📅 Oldest</option><option value="title">📝 Title</option></select>
+                </div>
+
+                <div id="loadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading articles…</p></div>
+                <div id="emptyState" class="empty-state" style="display: none;"><i class="fas fa-newspaper"></i><h3>No news</h3><p>Create your first article</p></div>
+
+                <div id="newsCardList" class="news-card-list"></div>
+                <div class="pagination" id="pagination"></div>
             </div>
 
-            <div class="filter-bar">
-                <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Search news..."></div>
-                <select class="filter-select" id="sortFilter"><option value="newest">📅 Newest</option><option value="oldest">📅 Oldest</option><option value="title">📝 Title</option></select>
+            <!-- Trustees Section -->
+            <div id="trustees-section" class="tab-content">
+                <div class="page-header">
+                    <h1><i class="fas fa-users"></i> Board of Trustees</h1>
+                    <button class="btn add-news-btn" id="addTrusteeBtn" style="background: linear-gradient(145deg, #3498db, #2980b9); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);"><i class="fas fa-user-plus"></i> Add Trustee</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon" style="background: #3498db;"><i class="fas fa-users"></i></div><div class="stat-content"><h3>Total Trustees</h3><div class="stat-number" id="totalTrustees">0</div></div></div>
+                </div>
+
+                <div id="trusteesLoadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading trustees…</p></div>
+                <div id="trusteesEmptyState" class="empty-state" style="display: none;"><i class="fas fa-users"></i><h3>No trustees</h3><p>Add your first trustee</p></div>
+
+                <div id="trusteeCardList" class="news-card-list"></div>
             </div>
-
-            <div id="loadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading articles…</p></div>
-            <div id="emptyState" class="empty-state" style="display: none;"><i class="fas fa-newspaper"></i><h3>No news</h3><p>Create your first article</p></div>
-
-            <div id="newsCardList" class="news-card-list" style="display: none;"></div>
-
-            <table style="display: none;"><tbody id="newsTableBody"></tbody></table>
-
-            <div class="pagination" id="pagination"></div>
         </main>
     </div>
 
@@ -697,15 +783,48 @@
 
     <div class="modal view-modal" id="viewNewsModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-newspaper"></i> Preview</h2><button class="modal-close" id="viewModalClose">&times;</button></div><div class="modal-body"><div class="view-news-title" id="viewNewsTitle"></div><div class="view-news-date"><i class="fas fa-calendar-alt"></i><span id="viewNewsDateText"></span></div><div class="view-news-description" id="viewNewsDescription"></div></div><div class="modal-footer"><button class="btn btn-secondary" id="closeViewBtn">Close</button></div></div></div>
 
+    <!-- Trustee Modal -->
+    <div class="modal" id="trusteeModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2 id="trusteeModalTitle"><i class="fas fa-user-plus"></i><span>Trustee</span></h2><button class="modal-close" id="trusteeModalClose">&times;</button></div>
+            <form id="trusteeForm" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div id="trusteeModalAlert" class="alert alert-danger" style="display: none;"></div>
+                    <input type="hidden" id="trusteeId">
+                    <div class="form-group"><label>Full Name *</label><input type="text" id="trusteeName" class="form-control" required></div>
+                    <div class="form-group"><label>Position</label><input type="text" id="trusteePosition" class="form-control" placeholder="e.g. Chairman, Member"></div>
+                    <div class="form-group"><label>Biography *</label><textarea id="trusteeBio" class="form-textarea" rows="5" required></textarea></div>
+                    <div class="form-group"><label>Order (Sorting)</label><input type="number" id="trusteeOrder" class="form-control" value="0"></div>
+                    <div class="form-group">
+                        <label>Profile Image *</label>
+                        <input type="file" id="trusteeImage" class="form-control" accept="image/*">
+                        <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
+                            <p style="font-size: 0.8rem; color: var(--gray-color);">Current image:</p>
+                            <img id="trusteeImagePreview" src="" alt="Preview" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; border: 2px solid #eee;">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelTrusteeBtn"><i class="fas fa-times"></i> Cancel</button>
+                    <button type="submit" class="btn" id="saveTrusteeBtn"><span class="btn-text">Save Trustee</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         (function() {
-            const API_BASE_URL = 'https://halal-food-foundation-backend.onrender.com/api';
+            const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+                ? 'http://localhost:400/api' 
+                : 'https://halal-food-foundation-backend.onrender.com/api';
             let authToken = localStorage.getItem('adminToken');
             let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
             let newsData = [];
+            let trusteeData = [];
             let currentPage = 1, itemsPerPage = 5;
             let currentFilters = { search: '', sort: 'newest' };
             let deleteTargetId = null;
+            let deleteType = 'news'; // 'news' or 'trustee'
 
             const loginPage = document.getElementById('loginPage');
             const adminPanel = document.getElementById('adminPanel');
@@ -745,6 +864,44 @@
             const totalNewsSpan = document.getElementById('totalNews');
             const monthNewsSpan = document.getElementById('monthNews');
             const newsCardList = document.getElementById('newsCardList');
+
+            // Trustees Elements
+            const addTrusteeBtn = document.getElementById('addTrusteeBtn');
+            const trusteeModal = document.getElementById('trusteeModal');
+            const trusteeModalClose = document.getElementById('trusteeModalClose');
+            const cancelTrusteeBtn = document.getElementById('cancelTrusteeBtn');
+            const trusteeForm = document.getElementById('trusteeForm');
+            const trusteeModalTitle = document.getElementById('trusteeModalTitle');
+            const trusteeId = document.getElementById('trusteeId');
+            const trusteeName = document.getElementById('trusteeName');
+            const trusteePosition = document.getElementById('trusteePosition');
+            const trusteeBio = document.getElementById('trusteeBio');
+            const trusteeOrder = document.getElementById('trusteeOrder');
+            const trusteeImage = document.getElementById('trusteeImage');
+            const trusteeImagePreview = document.getElementById('trusteeImagePreview');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            const trusteeModalAlert = document.getElementById('trusteeModalAlert');
+            const saveTrusteeBtn = document.getElementById('saveTrusteeBtn');
+            const trusteeCardList = document.getElementById('trusteeCardList');
+            const totalTrusteesSpan = document.getElementById('totalTrustees');
+            const trusteesLoadingIndicator = document.getElementById('trusteesLoadingIndicator');
+            const trusteesEmptyState = document.getElementById('trusteesEmptyState');
+
+            // Tab logic
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                    if (tabId === 'trustees-section') fetchTrustees();
+                    else fetchNews();
+                });
+            });
 
             if (authToken) { showAdminPanel(); fetchNews(); }
 
@@ -793,6 +950,12 @@
                 renderCards(filtered); renderPagination(filtered.length);
             }
 
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
             function renderCards(items) {
                 const start = (currentPage-1)*itemsPerPage, end = start+itemsPerPage, pageItems = items.slice(start, end);
                 if (items.length===0) { newsCardList.style.display='none'; emptyState.style.display='block'; return; }
@@ -814,7 +977,144 @@
 
             window.viewNews = async (id) => { try { const r = await fetch(`${API_BASE_URL}/news/${id}`,{headers:{Authorization:`Bearer ${authToken}`}}); if(r.ok) openViewModal(await r.json()); } catch(e){} };
             window.editNews = async (id) => { try { const r = await fetch(`${API_BASE_URL}/news/${id}`,{headers:{Authorization:`Bearer ${authToken}`}}); if(r.ok) openNewsModal(await r.json()); } catch(e){} };
-            window.openDeleteModal = (id) => { deleteTargetId = id; deleteModal.classList.add('active'); };
+            window.openDeleteModal = (id, type = 'news') => { 
+                deleteTargetId = id; 
+                deleteType = type;
+                deleteModal.classList.add('active'); 
+            };
+
+            // Trustees Logic
+            async function fetchTrustees() {
+                showTrusteesLoading(true);
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/trustee`, { headers: { Authorization: `Bearer ${authToken}` } });
+                    if (!resp.ok) throw new Error();
+                    const data = await resp.json();
+                    trusteeData = data.trustees || [];
+                    totalTrusteesSpan.textContent = trusteeData.length;
+                    renderTrusteeCards();
+                } catch { showTrusteesError('Could not load trustees.'); } finally { showTrusteesLoading(false); }
+            }
+
+            function renderTrusteeCards() {
+                if (trusteeData.length === 0) {
+                    trusteeCardList.style.display = 'none';
+                    trusteesEmptyState.style.display = 'block';
+                    return;
+                }
+                trusteeCardList.style.display = 'flex';
+                trusteesEmptyState.style.display = 'none';
+                trusteeCardList.innerHTML = trusteeData.map(t => `
+                    <div class="news-card">
+                        <div class="news-card-header" style="align-items: center; gap: 15px;">
+                            <img src="${t.image}" alt="${t.name}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color);">
+                            <div style="flex: 1;">
+                                <div class="news-card-title">${escapeHtml(t.name)}</div>
+                                <div style="font-size: 0.8rem; color: var(--gray-color);">${escapeHtml(t.position || 'Trustee')}</div>
+                            </div>
+                            <span class="news-card-date">Order: ${t.order || 0}</span>
+                        </div>
+                        <div class="news-card-preview">${escapeHtml(t.bio.substring(0, 100))}${t.bio.length > 100 ? '...' : ''}</div>
+                        <div class="news-card-actions">
+                            <button class="card-action-btn edit-btn-card" onclick="editTrustee('${t._id}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="card-action-btn delete-btn-card" onclick="openDeleteModal('${t._id}', 'trustee')"><i class="fas fa-trash"></i> Del</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            window.editTrustee = async (id) => {
+                try {
+                    const r = await fetch(`${API_BASE_URL}/trustee/${id}`, { headers: { Authorization: `Bearer ${authToken}` } });
+                    if (r.ok) {
+                        const data = await r.json();
+                        openTrusteeModal(data.trustee);
+                    }
+                } catch (e) { }
+            };
+
+            function openTrusteeModal(t) {
+                trusteeModalTitle.innerHTML = t ? '<i class="fas fa-edit"></i><span>Edit Trustee</span>' : '<i class="fas fa-user-plus"></i><span>Add Trustee</span>';
+                trusteeId.value = t?._id || '';
+                trusteeName.value = t?.name || '';
+                trusteePosition.value = t?.position || '';
+                trusteeBio.value = t?.bio || '';
+                trusteeOrder.value = t?.order || 0;
+                trusteeImage.value = ''; // Reset file input
+                
+                if (t?.image) {
+                    trusteeImagePreview.src = t.image;
+                    imagePreviewContainer.style.display = 'block';
+                } else {
+                    imagePreviewContainer.style.display = 'none';
+                }
+                
+                trusteeModalAlert.style.display = 'none';
+                trusteeModal.classList.add('active');
+            }
+
+            addTrusteeBtn.addEventListener('click', () => openTrusteeModal(null));
+            [trusteeModalClose, cancelTrusteeBtn].forEach(b => b.addEventListener('click', () => trusteeModal.classList.remove('active')));
+
+            trusteeForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const id = trusteeId.value;
+                const formData = new FormData();
+                formData.append('name', trusteeName.value.trim());
+                formData.append('position', trusteePosition.value.trim());
+                formData.append('bio', trusteeBio.value.trim());
+                formData.append('order', trusteeOrder.value);
+                
+                if (trusteeImage.files[0]) {
+                    formData.append('image', trusteeImage.files[0]);
+                } else if (!id) {
+                    showTrusteeModalError('Image is required for new trustee');
+                    return;
+                }
+
+                saveTrusteeBtn.disabled = true;
+                saveTrusteeBtn.querySelector('.btn-text').style.display = 'none';
+                saveTrusteeBtn.querySelector('.fa-spinner').style.display = 'inline-block';
+
+                try {
+                    const url = id ? `${API_BASE_URL}/trustee/${id}` : `${API_BASE_URL}/trustee`;
+                    const method = id ? 'PUT' : 'POST';
+                    const resp = await fetch(url, {
+                        method: method,
+                        headers: { Authorization: `Bearer ${authToken}` },
+                        body: formData
+                    });
+                    if (resp.ok) {
+                        trusteeModal.classList.remove('active');
+                        fetchTrustees();
+                    } else {
+                        const er = await resp.json();
+                        showTrusteeModalError(er.message || 'Error saving trustee');
+                    }
+                } catch { showTrusteeModalError('Network error'); } 
+                finally {
+                    saveTrusteeBtn.disabled = false;
+                    saveTrusteeBtn.querySelector('.btn-text').style.display = 'inline';
+                    saveTrusteeBtn.querySelector('.fa-spinner').style.display = 'none';
+                }
+            });
+
+            function showTrusteeModalError(m) {
+                trusteeModalAlert.textContent = m;
+                trusteeModalAlert.style.display = 'flex';
+                setTimeout(() => trusteeModalAlert.style.display = 'none', 4000);
+            }
+
+            function showTrusteesLoading(show) {
+                trusteesLoadingIndicator.style.display = show ? 'block' : 'none';
+                if (show) { trusteeCardList.style.display = 'none'; trusteesEmptyState.style.display = 'none'; }
+            }
+
+            function showTrusteesError(m) {
+                trusteesEmptyState.innerHTML = `<i class="fas fa-exclamation-circle" style="color:var(--danger-color);"></i><h3>Error</h3><p>${m}</p>`;
+                trusteesEmptyState.style.display = 'block';
+                trusteeCardList.style.display = 'none';
+            }
 
             function openViewModal(n) {
                 viewNewsTitle.textContent = n.title||'';
@@ -841,7 +1141,16 @@
             confirmDeleteBtn.addEventListener('click', async ()=>{
                 if(!deleteTargetId) return;
                 confirmDeleteBtn.disabled=true; confirmDeleteBtn.querySelector('.btn-text').style.display='none'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='inline-block';
-                try{ await fetch(`${API_BASE_URL}/news/${deleteTargetId}`,{ method:'DELETE', headers:{Authorization:`Bearer ${authToken}`} }); deleteModal.classList.remove('active'); fetchNews(); }catch(e){ alert('Error'); } finally { confirmDeleteBtn.disabled=false; confirmDeleteBtn.querySelector('.btn-text').style.display='inline'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='none'; deleteTargetId=null; }
+                try{ 
+                    const endpoint = deleteType === 'news' ? 'news' : 'trustee';
+                    const resp = await fetch(`${API_BASE_URL}/${endpoint}/${deleteTargetId}`,{ method:'DELETE', headers:{Authorization:`Bearer ${authToken}`} }); 
+                    if (resp.ok) {
+                        deleteModal.classList.remove('active'); 
+                        if (deleteType === 'news') fetchNews(); else fetchTrustees();
+                    } else {
+                        alert('Error deleting item');
+                    }
+                }catch(e){ alert('Error'); } finally { confirmDeleteBtn.disabled=false; confirmDeleteBtn.querySelector('.btn-text').style.display='inline'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='none'; deleteTargetId=null; }
             });
 
             newsForm.addEventListener('submit', async (e)=>{
