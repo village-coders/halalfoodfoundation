@@ -696,7 +696,7 @@
     <div class="login-container" id="loginPage">
         <div class="login-card">
             <div class="login-header">
-                <img src="/image/halal logo.png" alt="HFF Logo">
+                <img src="./image/halal logo.png" alt="HFF Logo">
                 <h2>Admin Login</h2>
                 <p>Enter credentials</p>
             </div>
@@ -715,7 +715,7 @@
     <div class="admin-container" id="adminPanel">
         <nav class="admin-nav">
             <div class="nav-content">
-                <div class="nav-logo"><a href="./index.html"><img src="/image/halal logo.png" alt="HFF Logo"></a><span>Halal Food Admin</span></div>
+                <div class="nav-logo"><a href="./index.html"><img src="./image/halal logo.png" alt="HFF Logo"></a><span>Halal Food Admin</span></div>
                 <div class="nav-user">
                     <div class="user-info"><div class="user-name" id="adminName">Admin</div><div class="user-role">manager</div></div>
                     <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span class="hide-xs">Exit</span></button>
@@ -727,6 +727,9 @@
             <div class="admin-tabs">
                 <button class="tab-btn active" data-tab="news-section"><i class="fas fa-newspaper"></i> News</button>
                 <button class="tab-btn" data-tab="trustees-section"><i class="fas fa-users"></i> Trustees</button>
+                <button class="tab-btn" data-tab="hero-section"><i class="fas fa-images"></i> Hero Slider</button>
+                <button class="tab-btn" data-tab="events-section"><i class="fas fa-calendar-star"></i> Events</button>
+                <button class="tab-btn" data-tab="grants-section"><i class="fas fa-hand-holding-heart"></i> Grants</button>
             </div>
 
             <!-- News Section -->
@@ -759,15 +762,42 @@
                     <h1><i class="fas fa-users"></i> Board of Trustees</h1>
                     <button class="btn add-news-btn" id="addTrusteeBtn" style="background: linear-gradient(145deg, #3498db, #2980b9); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);"><i class="fas fa-user-plus"></i> Add Trustee</button>
                 </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card"><div class="stat-icon" style="background: #3498db;"><i class="fas fa-users"></i></div><div class="stat-content"><h3>Total Trustees</h3><div class="stat-number" id="totalTrustees">0</div></div></div>
-                </div>
-
+                <div class="stats-grid"><div class="stat-card"><div class="stat-icon" style="background: #3498db;"><i class="fas fa-users"></i></div><div class="stat-content"><h3>Total Trustees</h3><div class="stat-number" id="totalTrustees">0</div></div></div></div>
                 <div id="trusteesLoadingIndicator" class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i><p>Loading trustees…</p></div>
                 <div id="trusteesEmptyState" class="empty-state" style="display: none;"><i class="fas fa-users"></i><h3>No trustees</h3><p>Add your first trustee</p></div>
-
                 <div id="trusteeCardList" class="news-card-list"></div>
+            </div>
+
+            <!-- Hero Slider Section -->
+            <div id="hero-section" class="tab-content">
+                <div class="page-header">
+                    <h1><i class="fas fa-images"></i> Hero Slider</h1>
+                    <button class="btn add-news-btn" id="addHeroBtn"><i class="fas fa-plus-circle"></i> Add Slide</button>
+                </div>
+                <div id="heroCardList" class="news-card-list"></div>
+            </div>
+
+            <!-- Events Section -->
+            <div id="events-section" class="tab-content">
+                <div class="page-header">
+                    <h1><i class="fas fa-calendar-day"></i> Event Images</h1>
+                    <button class="btn add-news-btn" id="addEventBtn"><i class="fas fa-plus-circle"></i> Add Event</button>
+                </div>
+                <div id="eventCardList" class="news-card-list"></div>
+            </div>
+
+            <!-- Grants Section -->
+            <div id="grants-section" class="tab-content">
+                <div class="page-header">
+                    <h1><i class="fas fa-hand-holding-heart"></i> Grant Section Content</h1>
+                    <button class="btn" id="editGrantContentBtn" style="background: linear-gradient(145deg, #0a5c36, #064523); box-shadow: 0 8px 20px rgba(10, 92, 54, 0.3);"><i class="fas fa-edit"></i> Edit Homepage Text</button>
+                </div>
+                
+                <div class="empty-state" style="display: block; padding: 40px; background: white; border-radius: 20px; box-shadow: var(--shadow);">
+                    <i class="fas fa-file-signature" style="color: var(--primary-color); font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>Homepage Content Management</h3>
+                    <p>Click the button above to update the "Grant Applications" text, deadlines, and requirements on your homepage.</p>
+                </div>
             </div>
         </main>
     </div>
@@ -777,6 +807,7 @@
     <div class="form-group"><label>Title *</label><input type="text" id="newsTitle" class="form-control" required></div>
     <div class="form-group"><label>Content *</label><textarea id="newsDescription" class="form-textarea" rows="5" required></textarea></div>
     <div class="form-group"><label>Date *</label><input type="datetime-local" id="newsDate" class="form-control" required></div>
+    <div class="form-group"><label>Image (Optional)</label><input type="file" id="newsImage" class="form-control" accept="./image/*"></div>
     </div><div class="modal-footer"><button type="button" class="btn btn-secondary" id="cancelBtn"><i class="fas fa-times"></i> Cancel</button><button type="submit" class="btn" id="saveBtn"><span class="btn-text">Save</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></form></div></div>
 
     <div class="modal" id="deleteModal"><div class="modal-content"><div class="modal-header"><h2><i class="fas fa-exclamation-triangle" style="color:#e74c3c;"></i> Confirm</h2><button class="modal-close" id="deleteModalClose">&times;</button></div><div class="modal-body"><p style="font-size:1.2rem;">Delete permanently?</p><p style="color:var(--danger-color);"> irreversible</p></div><div class="modal-footer"><button class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button><button class="btn btn-danger" id="confirmDeleteBtn"><span class="btn-text">Delete</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button></div></div></div>
@@ -797,7 +828,7 @@
                     <div class="form-group"><label>Order (Sorting)</label><input type="number" id="trusteeOrder" class="form-control" value="0"></div>
                     <div class="form-group">
                         <label>Profile Image *</label>
-                        <input type="file" id="trusteeImage" class="form-control" accept="image/*">
+                        <input type="file" id="trusteeImage" class="form-control" accept="./image/*">
                         <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
                             <p style="font-size: 0.8rem; color: var(--gray-color);">Current image:</p>
                             <img id="trusteeImagePreview" src="" alt="Preview" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; border: 2px solid #eee;">
@@ -812,12 +843,116 @@
         </div>
     </div>
 
+    <!-- Hero Modal -->
+    <div class="modal" id="heroModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2 id="heroModalTitle"><i class="fas fa-plus-circle"></i><span>Slide</span></h2><button class="modal-close" id="heroModalClose">&times;</button></div>
+            <form id="heroForm">
+                <div class="modal-body">
+                    <input type="hidden" id="heroId">
+                    <div class="form-group"><label>Title *</label><input type="text" id="heroTitle" class="form-control" required></div>
+                    <div class="form-group"><label>Subtitle</label><textarea id="heroSubtitle" class="form-textarea" rows="3"></textarea></div>
+                    <div class="form-group"><label>Order</label><input type="number" id="heroOrder" class="form-control" value="0"></div>
+                    <div class="form-group"><label>Image *</label><input type="file" id="heroImage" class="form-control" accept="./image/*"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelHeroBtn"><i class="fas fa-times"></i> Cancel</button>
+                    <button type="submit" class="btn" id="saveHeroBtn"><span class="btn-text">Save Slide</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header"><h2><i class="fas fa-calendar-plus"></i><span>Add Event Image</span></h2><button class="modal-close" id="eventModalClose">&times;</button></div>
+            <form id="eventForm">
+                <div class="modal-body">
+                    <div class="form-group"><label>Event Title</label><input type="text" id="eventTitle" class="form-control" placeholder="e.g. Webinar 2024"></div>
+                    <div class="form-group"><label>Event Image *</label><input type="file" id="eventImage" class="form-control" accept="./image/*" required></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelEventBtn"><i class="fas fa-times"></i> Cancel</button>
+                    <button type="submit" class="btn" id="saveEventBtn"><span class="btn-text">Upload Image</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Grant Content Modal -->
+    <div class="modal" id="grantContentModal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header"><h2><i class="fas fa-edit"></i><span>Edit Grant Section Content</span></h2><button class="modal-close" id="grantContentModalClose">&times;</button></div>
+            <form id="grantContentForm">
+                <div class="modal-body">
+                    <div id="grantContentModalAlert" class="alert alert-danger" style="display: none;"></div>
+                    
+                    <div class="form-group"><label>Section Title</label><input type="text" id="gcTitle" class="form-control" value="Grant Applications"></div>
+                    <div class="form-group"><label>Intro Text</label><textarea id="gcIntro" class="form-textarea" rows="4"></textarea></div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group"><label>Apply Title</label><input type="text" id="gcApplyTitle" class="form-control"></div>
+                        <div class="form-group"><label>Apply Text (Address/Info)</label><textarea id="gcApplyText" class="form-textarea" rows="3"></textarea></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deadlines (One per line)</label>
+                        <textarea id="gcDeadlines" class="form-textarea" rows="4" placeholder="Enter each deadline on a new line"></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group"><label>Requirements Title</label><input type="text" id="gcReqTitle" class="form-control"></div>
+                        <div class="form-group"><label>Requirements Text</label><textarea id="gcReqText" class="form-textarea" rows="3"></textarea></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Important Notes (One per line)</label>
+                        <textarea id="gcNotes" class="form-textarea" rows="6" placeholder="Enter each note on a new line"></textarea>
+                    </div>
+
+                    <h4 style="margin: 20px 0 10px; color: var(--primary-color);">Process Steps (4 steps)</h4>
+                    <div id="gcStepsContainer" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <!-- Step 1 -->
+                        <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                            <strong>Step 1</strong>
+                            <input type="text" id="gcStep1Title" class="form-control" placeholder="Title" style="margin: 5px 0;">
+                            <textarea id="gcStep1Desc" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                        </div>
+                        <!-- Step 2 -->
+                        <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                            <strong>Step 2</strong>
+                            <input type="text" id="gcStep2Title" class="form-control" placeholder="Title" style="margin: 5px 0;">
+                            <textarea id="gcStep2Desc" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                        </div>
+                        <!-- Step 3 -->
+                        <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                            <strong>Step 3</strong>
+                            <input type="text" id="gcStep3Title" class="form-control" placeholder="Title" style="margin: 5px 0;">
+                            <textarea id="gcStep3Desc" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                        </div>
+                        <!-- Step 4 -->
+                        <div style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                            <strong>Step 4</strong>
+                            <input type="text" id="gcStep4Title" class="form-control" placeholder="Title" style="margin: 5px 0;">
+                            <textarea id="gcStep4Desc" class="form-textarea" rows="2" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelGrantContentBtn"><i class="fas fa-times"></i> Cancel</button>
+                    <button type="submit" class="btn" id="saveGrantContentBtn"><span class="btn-text">Update Homepage</span><i class="fas fa-spinner fa-spin" style="display:none;"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         (function() {
-            // const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-            //     ? 'http://localhost:400/api' 
-            //     : 'https://hff-backend.vercel.app/api';
-            const API_BASE_URL = 'https://hff-backend.vercel.app/api';
+            const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+                ? 'http://localhost:5000/api' 
+                : 'https://hffbackend.vercel.app/api';
             let authToken = localStorage.getItem('adminToken');
             let currentUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
             let newsData = [];
@@ -825,7 +960,8 @@
             let currentPage = 1, itemsPerPage = 5;
             let currentFilters = { search: '', sort: 'newest' };
             let deleteTargetId = null;
-            let deleteType = 'news'; // 'news' or 'trustee'
+            let deleteType = 'news'; // 'news', 'trustee', 'hero', 'event', 'grant'
+            let heroData = [], eventData = [], grantData = [];
 
             const loginPage = document.getElementById('loginPage');
             const adminPanel = document.getElementById('adminPanel');
@@ -888,6 +1024,57 @@
             const trusteesLoadingIndicator = document.getElementById('trusteesLoadingIndicator');
             const trusteesEmptyState = document.getElementById('trusteesEmptyState');
 
+            // Hero Elements
+            const addHeroBtn = document.getElementById('addHeroBtn');
+            const heroModal = document.getElementById('heroModal');
+            const heroModalClose = document.getElementById('heroModalClose');
+            const cancelHeroBtn = document.getElementById('cancelHeroBtn');
+            const heroForm = document.getElementById('heroForm');
+            const heroModalTitle = document.getElementById('heroModalTitle');
+            const heroId = document.getElementById('heroId');
+            const heroTitle = document.getElementById('heroTitle');
+            const heroSubtitle = document.getElementById('heroSubtitle');
+            const heroOrder = document.getElementById('heroOrder');
+            const heroImage = document.getElementById('heroImage');
+            const heroCardList = document.getElementById('heroCardList');
+            const saveHeroBtn = document.getElementById('saveHeroBtn');
+
+            // Event Elements
+            const addEventBtn = document.getElementById('addEventBtn');
+            const eventModal = document.getElementById('eventModal');
+            const eventModalClose = document.getElementById('eventModalClose');
+            const cancelEventBtn = document.getElementById('cancelEventBtn');
+            const eventForm = document.getElementById('eventForm');
+            const eventTitle = document.getElementById('eventTitle');
+            const eventImage = document.getElementById('eventImage');
+            const eventCardList = document.getElementById('eventCardList');
+            const saveEventBtn = document.getElementById('saveEventBtn');
+
+            // Grant Content Modal Elements
+            const editGrantContentBtn = document.getElementById('editGrantContentBtn');
+            const grantContentModal = document.getElementById('grantContentModal');
+            const grantContentModalClose = document.getElementById('grantContentModalClose');
+            const cancelGrantContentBtn = document.getElementById('cancelGrantContentBtn');
+            const grantContentForm = document.getElementById('grantContentForm');
+            const gcTitle = document.getElementById('gcTitle');
+            const gcIntro = document.getElementById('gcIntro');
+            const gcApplyTitle = document.getElementById('gcApplyTitle');
+            const gcApplyText = document.getElementById('gcApplyText');
+            const gcDeadlines = document.getElementById('gcDeadlines');
+            const gcReqTitle = document.getElementById('gcReqTitle');
+            const gcReqText = document.getElementById('gcReqText');
+            const gcNotes = document.getElementById('gcNotes');
+            const gcStep1Title = document.getElementById('gcStep1Title');
+            const gcStep1Desc = document.getElementById('gcStep1Desc');
+            const gcStep2Title = document.getElementById('gcStep2Title');
+            const gcStep2Desc = document.getElementById('gcStep2Desc');
+            const gcStep3Title = document.getElementById('gcStep3Title');
+            const gcStep3Desc = document.getElementById('gcStep3Desc');
+            const gcStep4Title = document.getElementById('gcStep4Title');
+            const gcStep4Desc = document.getElementById('gcStep4Desc');
+            const grantContentModalAlert = document.getElementById('grantContentModalAlert');
+            const saveGrantContentBtn = document.getElementById('saveGrantContentBtn');
+
             // Tab logic
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
@@ -900,6 +1087,9 @@
                     btn.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                     if (tabId === 'trustees-section') fetchTrustees();
+                    else if (tabId === 'hero-section') fetchHeroes();
+                    else if (tabId === 'events-section') fetchEvents();
+                    else if (tabId === 'grants-section') { /* Text only, no fetch needed */ }
                     else fetchNews();
                 });
             });
@@ -918,7 +1108,10 @@
                         localStorage.setItem('adminToken', authToken); localStorage.setItem('adminUser', JSON.stringify(data.user));
                         showAdminPanel(); fetchNews(); loginForm.reset(); loginAlert.style.display='none';
                     } else { showLoginError(data.message || 'Invalid'); }
-                } catch { showLoginError('Network error'); }
+                } catch (error) { 
+                    console.error('Login error:', error);
+                    showLoginError('Network error or server down'); 
+                }
                 finally { loginBtn.disabled=false; loginBtn.querySelector('.btn-text').style.display='inline'; loginBtn.querySelector('.fa-spinner').style.display='none'; }
             });
 
@@ -991,7 +1184,7 @@
                     const resp = await fetch(`${API_BASE_URL}/trustee`, { headers: { Authorization: `Bearer ${authToken}` } });
                     if (!resp.ok) throw new Error();
                     const data = await resp.json();
-                    trusteeData = data.trustees || [];
+                    trusteeData = Array.isArray(data) ? data : (data.trustees || []);
                     totalTrusteesSpan.textContent = trusteeData.length;
                     renderTrusteeCards();
                 } catch { showTrusteesError('Could not load trustees.'); } finally { showTrusteesLoading(false); }
@@ -1029,7 +1222,7 @@
                     const r = await fetch(`${API_BASE_URL}/trustee/${id}`, { headers: { Authorization: `Bearer ${authToken}` } });
                     if (r.ok) {
                         const data = await r.json();
-                        openTrusteeModal(data.trustee);
+                        openTrusteeModal(data);
                     }
                 } catch (e) { }
             };
@@ -1144,11 +1337,20 @@
                 if(!deleteTargetId) return;
                 confirmDeleteBtn.disabled=true; confirmDeleteBtn.querySelector('.btn-text').style.display='none'; confirmDeleteBtn.querySelector('.fa-spinner').style.display='inline-block';
                 try{ 
-                    const endpoint = deleteType === 'news' ? 'news' : 'trustee';
+                    let endpoint = 'news';
+                    if (deleteType === 'trustee') endpoint = 'trustee';
+                    else if (deleteType === 'hero') endpoint = 'hero';
+                    else if (deleteType === 'event') endpoint = 'event';
+                    else if (deleteType === 'grant') endpoint = 'grant';
+
                     const resp = await fetch(`${API_BASE_URL}/${endpoint}/${deleteTargetId}`,{ method:'DELETE', headers:{Authorization:`Bearer ${authToken}`} }); 
                     if (resp.ok) {
                         deleteModal.classList.remove('active'); 
-                        if (deleteType === 'news') fetchNews(); else fetchTrustees();
+                        if (deleteType === 'news') fetchNews(); 
+                        else if (deleteType === 'trustee') fetchTrustees();
+                        else if (deleteType === 'hero') fetchHeroes();
+                        else if (deleteType === 'event') fetchEvents();
+                        else if (deleteType === 'grant') fetchGrants();
                     } else {
                         alert('Error deleting item');
                     }
@@ -1158,13 +1360,24 @@
             newsForm.addEventListener('submit', async (e)=>{
                 e.preventDefault();
                 const id = newsId.value, title = newsTitle.value.trim(), desc = newsDescription.value.trim(), date = newsDate.value;
+                const imageFile = document.getElementById('newsImage').files[0];
                 if(!title||!desc||!date) { showModalError('All fields required'); return; }
+
                 saveBtn.disabled=true; saveBtn.querySelector('.btn-text').style.display='none'; saveBtn.querySelector('.fa-spinner').style.display='inline-block';
-                const payload = { title, description: desc, date: new Date(date).toISOString() };
+                
+                const dateObj = new Date(date);
+                if(isNaN(dateObj.getTime())) { showModalError('Invalid date format'); return; }
+
+                const formData = new FormData();
+                formData.append('title', title);
+                formData.append('description', desc);
+                formData.append('date', dateObj.toISOString());
+                if(imageFile) formData.append('image', imageFile);
+
                 try {
                     const url = id ? `${API_BASE_URL}/news/${id}` : `${API_BASE_URL}/news`;
-                    const resp = await fetch(url, { method: id?'PUT':'POST', headers:{'Content-Type':'application/json', Authorization:`Bearer ${authToken}`}, body:JSON.stringify(payload) });
-                    if (resp.ok) { newsModal.classList.remove('active'); fetchNews(); } else { const er = await resp.json(); showModalError(er.message||'Error'); }
+                    const resp = await fetch(url, { method: id?'PUT':'POST', headers:{ Authorization:`Bearer ${authToken}`}, body: formData });
+                    if (resp.ok) { newsModal.classList.remove('active'); fetchNews(); newsForm.reset(); } else { const er = await resp.json(); showModalError(er.message||'Error'); }
                 } catch { showModalError('Network error'); } finally { saveBtn.disabled=false; saveBtn.querySelector('.btn-text').style.display='inline'; saveBtn.querySelector('.fa-spinner').style.display='none'; }
             });
 
@@ -1184,6 +1397,205 @@
             window.changePage = (p) => { currentPage = p; applyFiltersAndRender(); };
 
             addNewsBtn.addEventListener('click',()=>openNewsModal(null));
+
+            // Hero Slider Logic
+            async function fetchHeroes() {
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/hero`, { headers: { Authorization: `Bearer ${authToken}` } });
+                    if (resp.ok) {
+                        heroData = await resp.json();
+                        renderHeroCards();
+                    }
+                } catch (e) { }
+            }
+
+            function renderHeroCards() {
+                heroCardList.innerHTML = heroData.map(h => `
+                    <div class="news-card">
+                        <div class="news-card-header" style="align-items: center; gap: 15px;">
+                            <img src="${h.image}" style="width: 80px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <div style="flex: 1;">
+                                <div class="news-card-title">${escapeHtml(h.title)}</div>
+                                <div style="font-size: 0.8rem; color: var(--gray-color);">${escapeHtml(h.subtitle || '')}</div>
+                            </div>
+                            <span class="news-card-date">Order: ${h.order || 0}</span>
+                        </div>
+                        <div class="news-card-actions">
+                            <button class="card-action-btn edit-btn-card" onclick="editHero('${h._id}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="card-action-btn delete-btn-card" onclick="openDeleteModal('${h._id}', 'hero')"><i class="fas fa-trash"></i> Del</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            window.editHero = async (id) => {
+                const h = heroData.find(x => x._id === id);
+                if (h) openHeroModal(h);
+            };
+
+            function openHeroModal(h) {
+                heroModalTitle.innerHTML = h ? '<i class="fas fa-edit"></i><span>Edit Slide</span>' : '<i class="fas fa-plus-circle"></i><span>Add Slide</span>';
+                heroId.value = h?._id || '';
+                heroTitle.value = h?.title || '';
+                heroSubtitle.value = h?.subtitle || '';
+                heroOrder.value = h?.order || 0;
+                heroImage.value = '';
+                heroModal.classList.add('active');
+            }
+
+            addHeroBtn.addEventListener('click', () => openHeroModal(null));
+            [heroModalClose, cancelHeroBtn].forEach(b => b.addEventListener('click', () => heroModal.classList.remove('active')));
+
+            heroForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const id = heroId.value;
+                const formData = new FormData();
+                formData.append('title', heroTitle.value.trim());
+                formData.append('subtitle', heroSubtitle.value.trim());
+                formData.append('order', heroOrder.value);
+                if (heroImage.files[0]) formData.append('image', heroImage.files[0]);
+                else if (!id) { alert('Image required'); return; }
+
+                saveHeroBtn.disabled = true;
+                try {
+                    const url = id ? `${API_BASE_URL}/hero/${id}` : `${API_BASE_URL}/hero`;
+                    const method = id ? 'PUT' : 'POST';
+                    const resp = await fetch(url, { method, headers: { Authorization: `Bearer ${authToken}` }, body: formData });
+                    if (resp.ok) { heroModal.classList.remove('active'); fetchHeroes(); }
+                } catch (e) { } finally { saveHeroBtn.disabled = false; }
+            });
+
+            // Events Logic
+            async function fetchEvents() {
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/event`, { headers: { Authorization: `Bearer ${authToken}` } });
+                    if (resp.ok) {
+                        eventData = await resp.json();
+                        renderEventCards();
+                    }
+                } catch (e) { }
+            }
+
+            function renderEventCards() {
+                eventCardList.innerHTML = eventData.map(ev => `
+                    <div class="news-card">
+                        <div class="news-card-header" style="align-items: center; gap: 15px;">
+                            <img src="${ev.image}" style="width: 80px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <div style="flex: 1;">
+                                <div class="news-card-title">${escapeHtml(ev.title || 'Event Image')}</div>
+                                <div style="font-size: 0.8rem; color: var(--gray-color);">${new Date(ev.createdAt).toLocaleDateString()}</div>
+                            </div>
+                        </div>
+                        <div class="news-card-actions">
+                            <button class="card-action-btn delete-btn-card" onclick="openDeleteModal('${ev._id}', 'event')"><i class="fas fa-trash"></i> Del</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            addEventBtn.addEventListener('click', () => eventModal.classList.add('active'));
+            [eventModalClose, cancelEventBtn].forEach(b => b.addEventListener('click', () => eventModal.classList.remove('active')));
+
+            eventForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData();
+                formData.append('title', eventTitle.value.trim());
+                if (eventImage.files[0]) formData.append('image', eventImage.files[0]);
+                else { alert('Image required'); return; }
+
+                saveEventBtn.disabled = true;
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/event`, { method: 'POST', headers: { Authorization: `Bearer ${authToken}` }, body: formData });
+                    if (resp.ok) { eventModal.classList.remove('active'); fetchEvents(); eventForm.reset(); }
+                } catch (e) { } finally { saveEventBtn.disabled = false; }
+            });
+
+            // Grant Content Logic
+            async function fetchGrantContent() {
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/grant-info`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        if (data && data.title) populateGrantContentForm(data);
+                    }
+                } catch (e) {}
+            }
+
+            function populateGrantContentForm(data) {
+                gcTitle.value = data.title || '';
+                gcIntro.value = data.intro || '';
+                gcApplyTitle.value = data.applyTitle || '';
+                gcApplyText.value = data.applyText || '';
+                gcDeadlines.value = (data.deadlines || []).join('\n');
+                gcReqTitle.value = data.requirementsTitle || '';
+                gcReqText.value = data.requirementsText || '';
+                gcNotes.value = (data.importantNotes || []).join('\n');
+                
+                if (data.processSteps && data.processSteps.length >= 4) {
+                    gcStep1Title.value = data.processSteps[0].title; gcStep1Desc.value = data.processSteps[0].description;
+                    gcStep2Title.value = data.processSteps[1].title; gcStep2Desc.value = data.processSteps[1].description;
+                    gcStep3Title.value = data.processSteps[2].title; gcStep3Desc.value = data.processSteps[2].description;
+                    gcStep4Title.value = data.processSteps[3].title; gcStep4Desc.value = data.processSteps[3].description;
+                }
+            }
+
+            editGrantContentBtn.addEventListener('click', () => {
+                fetchGrantContent();
+                grantContentModal.classList.add('active');
+            });
+
+            [grantContentModalClose, cancelGrantContentBtn].forEach(b => b.addEventListener('click', () => grantContentModal.classList.remove('active')));
+
+
+
+            grantContentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = {
+                    title: gcTitle.value.trim(),
+                    intro: gcIntro.value.trim(),
+                    applyTitle: gcApplyTitle.value.trim(),
+                    applyText: gcApplyText.value.trim(),
+                    deadlines: gcDeadlines.value.split('\n').filter(l => l.trim()),
+                    requirementsTitle: gcReqTitle.value.trim(),
+                    requirementsText: gcReqText.value.trim(),
+                    importantNotes: gcNotes.value.split('\n').filter(l => l.trim()),
+                    processSteps: [
+                        { icon: 'fas fa-file-alt', title: gcStep1Title.value.trim(), description: gcStep1Desc.value.trim() },
+                        { icon: 'fas fa-paper-plane', title: gcStep2Title.value.trim(), description: gcStep2Desc.value.trim() },
+                        { icon: 'fas fa-users', title: gcStep3Title.value.trim(), description: gcStep3Desc.value.trim() },
+                        { icon: 'fas fa-check-circle', title: gcStep4Title.value.trim(), description: gcStep4Desc.value.trim() }
+                    ]
+                };
+
+                saveGrantContentBtn.disabled = true;
+                saveGrantContentBtn.querySelector('.btn-text').style.display = 'none';
+                saveGrantContentBtn.querySelector('.fa-spinner').style.display = 'inline-block';
+
+                try {
+                    const resp = await fetch(`${API_BASE_URL}/grant-info`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${authToken}` 
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    if (resp.ok) {
+                        grantContentModal.classList.remove('active');
+                    } else {
+                        const er = await resp.json();
+                        grantContentModalAlert.textContent = er.message || 'Error updating content';
+                        grantContentModalAlert.style.display = 'flex';
+                    }
+                } catch { 
+                    grantContentModalAlert.textContent = 'Network error';
+                    grantContentModalAlert.style.display = 'flex';
+                } finally {
+                    saveGrantContentBtn.disabled = false;
+                    saveGrantContentBtn.querySelector('.btn-text').style.display = 'inline';
+                    saveGrantContentBtn.querySelector('.fa-spinner').style.display = 'none';
+                }
+            });
 
             function showLoading(show) { loadingIndicator.style.display = show?'block':'none'; if(show) { newsCardList.style.display='none'; emptyState.style.display='none'; } }
             function showError(m) { emptyState.innerHTML=`<i class="fas fa-exclamation-circle" style="color:var(--danger-color);"></i><h3>Error</h3><p>${m}</p>`; emptyState.style.display='block'; newsCardList.style.display='none'; }
